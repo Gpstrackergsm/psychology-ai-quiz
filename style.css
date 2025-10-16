@@ -1,0 +1,157 @@
+:root {
+  color-scheme: light dark;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background-color: #f7f7fb;
+  color: #1f2430;
+  accent-color: #5b6cff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top, rgba(91, 108, 255, 0.2), transparent)
+      no-repeat,
+    #f7f7fb;
+}
+
+.page-header,
+.page-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 1.5rem;
+}
+
+.page-footer {
+  margin-top: auto;
+  font-size: 0.95rem;
+  color: #505566;
+}
+
+main {
+  width: min(750px, 92vw);
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tagline {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  color: #38405a;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #394366;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(44, 62, 125, 0.18);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.choices {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    border-color 0.15s ease, background-color 0.15s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button.choice {
+  background: #f0f2ff;
+  border-color: #e0e5ff;
+}
+
+button.choice:hover:not([aria-pressed='true']):not(:disabled),
+button.choice:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(91, 108, 255, 0.25);
+  border-color: #5b6cff;
+  outline: none;
+}
+
+button.choice[aria-pressed='true'] {
+  background: #5b6cff;
+  color: #fff;
+  border-color: #4c58d6;
+}
+
+button.choice.correct {
+  background: #31c48d;
+  border-color: #22a06b;
+  color: #093622;
+}
+
+button.choice.incorrect {
+  background: #ff6b6b;
+  border-color: #d94c4c;
+  color: #fff;
+}
+
+.primary {
+  align-self: flex-start;
+  background: #5b6cff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.85rem 1.6rem;
+}
+
+.primary:hover:not(:disabled),
+.primary:focus-visible {
+  background: #4c58d6;
+  outline: none;
+}
+
+.feedback {
+  min-height: 2.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #394366;
+}
+
+.summary {
+  text-align: center;
+  background: rgba(91, 108, 255, 0.12);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
