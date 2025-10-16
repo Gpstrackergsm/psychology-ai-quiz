@@ -15,10 +15,24 @@ psychology needs assessment and receive a personalized book recommendation.
 
 ## Getting started
 
+### Quick preview
+
 1. Open `index.html` in your browser to try the quiz locally.
 2. Complete all questions and review the tailored reading suggestion.
 3. Use the "Retake the quiz" button to explore different combinations of
    responses.
+
+### Run with a local server
+
+If your browser blocks local file access or you prefer using
+`http://localhost`, start the bundled static server:
+
+```bash
+npm start
+```
+
+The quiz will be served at <http://localhost:8000>. Stop the server with
+`Ctrl+C` when you are done exploring.
 
 Feel free to expand the question bank or connect the scoring data to your own
 recommendation engine.
