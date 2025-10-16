@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Psychology Insight Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Discover Your Mind</h1>
+        <p>
+          Answer a short series of psychology-focused questions and receive a
+          personalized book recommendation tailored to your current needs.
+        </p>
+        <button id="startQuiz" class="button button--primary">
+          Start the quiz
+        </button>
+      </div>
+      <div class="hero__image" aria-hidden="true">
+        <img src="assets/brain-illustration.svg" alt="" />
+      </div>
+    </header>
+
+    <main>
+      <section id="quiz" class="card quiz" hidden>
+        <div class="quiz__header">
+          <h2 id="questionTitle">Question 1</h2>
+          <p id="progress">1 / 15</p>
+        </div>
+        <p id="questionText" class="quiz__question"></p>
+
+        <form id="options" class="quiz__options" aria-live="polite"></form>
+
+        <div class="quiz__actions">
+          <button id="prevBtn" class="button button--ghost" type="button">
+            Previous
+          </button>
+          <button id="nextBtn" class="button button--primary" type="button">
+            Next
+          </button>
+        </div>
+      </section>
+
+      <section id="results" class="card results" hidden>
+        <h2>Your personalized recommendation</h2>
+        <div id="scoreSummary" class="results__summary"></div>
+        <div id="recommendation" class="results__recommendation"></div>
+        <button id="restartBtn" class="button button--secondary" type="button">
+          Retake the quiz
+        </button>
+      </section>
+
+      <section class="card about">
+        <h2>How this quiz works</h2>
+        <p>
+          Each question is designed to gauge how you currently feel across five
+          wellbeing areas: stress resilience, mindfulness, relationships,
+          cognitive patterns, and self-worth. Your highest scoring area reveals
+          where a little guidance could be most meaningful today.
+        </p>
+        <p>
+          The recommended reading list is curated by our in-house psychology
+          team. Every title pairs practical strategies with science-backed
+          insights so you can take the next step with confidence.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>&copy; <span id="year"></span> Psychology Insight Quiz. All rights reserved.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
