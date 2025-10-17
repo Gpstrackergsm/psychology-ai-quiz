@@ -1,0 +1,42 @@
+[
+  {
+    "category": "Anxiety",
+    "title": "The CBT Flip Chart",
+    "author": "Seth J. Gillihan",
+    "description": "A practical toolkit of cognitive behavioral therapy strategies to calm anxious thoughts and regain control of your day-to-day life.",
+    "coverUrl": "https://images-na.ssl-images-amazon.com/images/I/71gVdJNpXPL.jpg",
+    "purchaseUrl": "https://www.amazon.com/CBT-Flip-Chart-Cognitive-Behavioral/dp/1626258613"
+  },
+  {
+    "category": "Trauma",
+    "title": "PTSD & Trauma Recovery Workbook",
+    "author": "Arielle Schwartz",
+    "description": "Step-by-step exercises and mindfulness practices designed to help you process traumatic experiences and build resilience.",
+    "coverUrl": "https://images-na.ssl-images-amazon.com/images/I/81ZSSMzdgCL.jpg",
+    "purchaseUrl": "https://www.amazon.com/PTSD-Trauma-Recovery-Workbook-Somatic/dp/1641521317"
+  },
+  {
+    "category": "Depression",
+    "title": "The Cognitive Behavioral Workbook for Depression",
+    "author": "William J. Knaus",
+    "description": "Evidence-based CBT techniques that empower you to challenge unhelpful beliefs, manage mood slumps, and rediscover motivation.",
+    "coverUrl": "https://images-na.ssl-images-amazon.com/images/I/71NKuxJqqGL.jpg",
+    "purchaseUrl": "https://www.amazon.com/Cognitive-Behavioral-Workbook-Depression-Step/dp/1684039475"
+  },
+  {
+    "category": "Relationships",
+    "title": "The Couples Therapy Workbook",
+    "author": "Kathleen Mates-Youngman",
+    "description": "Guided conversations and activities to deepen intimacy, resolve conflict, and rebuild trust with your partner.",
+    "coverUrl": "https://images-na.ssl-images-amazon.com/images/I/71qP0DKy8lL.jpg",
+    "purchaseUrl": "https://www.amazon.com/Couples-Therapy-Workbook-Communication-Relationship/dp/1623156557"
+  },
+  {
+    "category": "Motivation",
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "description": "A science-backed blueprint for building good habits, breaking bad ones, and making small changes that deliver remarkable results.",
+    "coverUrl": "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg",
+    "purchaseUrl": "https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299"
+  }
+]
