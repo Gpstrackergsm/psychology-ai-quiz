@@ -7,6 +7,9 @@ An interactive quiz that helps you explore how artificial intelligence intersect
 Open the quiz directly in your browser:
 
 - [Launch the Psychology AI Quiz](./index.html)
+- [Preview the quiz via HTMLPreview](https://htmlpreview.github.io/?https://github.com/<GITHUB_USERNAME>/psychology-ai-quiz/blob/main/index.html)
+
+> Replace `<GITHUB_USERNAME>` with your GitHub handle (or organization name) to generate a live preview URL directly from the repository.
 
 You can also serve the project locally with a simple HTTP server if you prefer:
 
