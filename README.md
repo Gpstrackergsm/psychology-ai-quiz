@@ -1,27 +1,75 @@
-# Psychology AI Quiz
+# MindMatch: Find Your Book
 
-An interactive quiz that helps you explore how artificial intelligence intersects with modern psychology topics. The quiz runs entirely in the browser—no build tools or backend services required.
-
-## Quick Start
-
-Open the quiz directly in your browser:
-
-- [Launch the Psychology AI Quiz](./index.html)
-- [Preview the quiz via HTMLPreview](https://htmlpreview.github.io/?https://github.com/<GITHUB_USERNAME>/psychology-ai-quiz/blob/main/index.html)
-
-> Replace `<GITHUB_USERNAME>` with your GitHub handle (or organization name) to generate a live preview URL directly from the repository.
-
-You can also serve the project locally with a simple HTTP server if you prefer:
-
-```bash
-python3 -m http.server
-```
-
-Then visit [http://localhost:8000](http://localhost:8000) and open `index.html`.
+MindMatch is a responsive psychology quiz that helps visitors identify their most pressing emotional focus area and unlock a tailored book recommendation. The project uses a modern React + Tailwind CSS frontend paired with a lightweight Express backend.
 
 ## Features
 
-- Five multiple-choice questions covering ethical and practical AI-in-psychology scenarios.
-- Instant feedback with highlighted correct and incorrect answers.
-- Responsive design that looks great on desktops and mobile devices.
-- Reset button to quickly retake the quiz.
+- **Guided landing experience** with a bold headline, soft gradients, and call-to-action.
+- **Interactive quiz** with 12 questions spanning anxiety, depression, trauma, motivation, and relationships.
+- **Progress tracking** and smooth animations using Framer Motion.
+- **Dynamic results page** that highlights the top category, displays category scores, and surfaces a curated book suggestion.
+- **Book catalog API** served from Express with JSON storage for easy future expansion.
+- **Share and retake actions** so visitors can retake the quiz or post results on social media.
+
+## Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS, Framer Motion, Axios
+- **Backend:** Node.js, Express, CORS
+- **Data:** JSON configuration for book recommendations
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+From the repository root, install dependencies for both frontend and backend:
+
+```bash
+cd backend
+npm install
+cd ../frontend
+npm install
+```
+
+### Running the App
+
+Start the backend API:
+
+```bash
+cd backend
+npm run dev
+```
+
+In a new terminal, launch the React development server:
+
+```bash
+cd frontend
+npm run dev
+```
+
+The frontend is available at `http://localhost:5173` and automatically proxies API requests to `http://localhost:4000`.
+
+### Building for Production
+
+```bash
+cd frontend
+npm run build
+```
+
+The output will be generated in `frontend/dist`.
+
+## Customizing Books
+
+Book recommendations live in [`backend/data/books.json`](backend/data/books.json). Each entry contains a `category`, `title`, `author`, `summary`, `coverImage`, and `purchaseLink`. Add or edit items to expand MindMatch with new focus areas or titles.
+
+## Quiz Content
+
+Quiz questions are stored in [`frontend/src/data/quizData.js`](frontend/src/data/quizData.js). Update prompts, options, categories, or scoring to match your program’s needs.
+
+## License
+
+MIT
