@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Psychology AI Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="quiz">
+    <header class="quiz__header">
+      <h1>Psychology AI Quiz</h1>
+      <p class="quiz__description">
+        Test your knowledge of how artificial intelligence intersects with modern psychology.
+        Choose the best answer for each question and click <strong>Check Answers</strong> when you're ready.
+      </p>
+    </header>
+
+    <form id="quiz-form" class="quiz__form" novalidate>
+      <ol class="quiz__questions" id="quiz-questions">
+        <!-- Questions rendered by script.js -->
+      </ol>
+
+      <div class="quiz__actions">
+        <button type="submit" class="quiz__button">Check Answers</button>
+        <button type="button" id="reset-btn" class="quiz__button quiz__button--secondary">Reset</button>
+      </div>
+    </form>
+
+    <section id="quiz-result" class="quiz__result" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
