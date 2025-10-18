@@ -18,6 +18,29 @@ const containerVariants = {
 };
 
 function App() {
+  const apiBaseUrl = useMemo(() => {
+    const envUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+    if (envUrl) {
+      return envUrl.replace(/\/$/, '');
+    }
+
+    if (typeof window === 'undefined') {
+      return '';
+    }
+
+    const { protocol, hostname, port } = window.location;
+
+    if (!port) {
+      return `${protocol}//${hostname}`;
+    }
+
+    if (port === '5173') {
+      return `${protocol}//${hostname}:4000`;
+    }
+
+    return `${protocol}//${hostname}:${port}`;
+  }, []);
+
   const [stage, setStage] = useState(stages.landing);
   const [scores, setScores] = useState({});
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -29,12 +52,15 @@ function App() {
     async function fetchBooks() {
       try {
         setLoadingBooks(true);
-        const response = await axios.get('/api/books');
+        const endpoint = apiBaseUrl ? `${apiBaseUrl}/api/books` : '/api/books';
+        const response = await axios.get(endpoint);
         setBooks(response.data);
       } catch (error) {
         console.error('Failed to fetch books', error);
         setBookError(
-          'We could not reach the MindMatch book catalog. Start the backend server (npm run dev in /backend) and refresh to load recommendations.'
+          apiBaseUrl
+            ? `We could not reach the MindMatch book catalog at ${apiBaseUrl}. Make sure the backend server is running (npm run dev in /backend) or update VITE_API_BASE_URL.`
+            : 'We could not reach the MindMatch book catalog. Start the backend server (npm run dev in /backend) and refresh to load recommendations.'
         );
       } finally {
         setLoadingBooks(false);
@@ -42,7 +68,7 @@ function App() {
     }
 
     fetchBooks();
-  }, []);
+  }, [apiBaseUrl]);
 
   const topRecommendation = useMemo(() => {
     if (!currentCategory) return null;

@@ -44,6 +44,14 @@ cd backend
 npm run dev
 ```
 
+Copy the provided frontend environment template and update it if you are running the backend on a custom host or port:
+
+```bash
+cd frontend
+cp .env.example .env
+# edit .env if needed
+```
+
 In a new terminal, launch the React development server:
 
 ```bash
@@ -51,7 +59,7 @@ cd frontend
 npm run dev
 ```
 
-The frontend is available at `http://localhost:5173` and automatically proxies API requests to `http://localhost:4000`.
+The frontend is available at `http://localhost:5173`. API requests default to `http://localhost:4000`; adjust `VITE_API_BASE_URL` in `frontend/.env` if your backend runs elsewhere.
 
 ### Building for Production
 
