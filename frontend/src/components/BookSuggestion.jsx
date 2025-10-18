@@ -36,7 +36,7 @@ function BookSuggestion({ recommendation }) {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/40 transition hover:bg-orange-500"
+          className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/40 transition hover:bg-accent-dark"
         >
           Buy Now
         </motion.a>
