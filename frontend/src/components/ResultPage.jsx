@@ -1,12 +1,22 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import fallbackCatalog from '../data/bookCatalogFallback.js';
 
 function ResultPage({ scores, category, onRetake, onBackHome }) {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.location.href = 'https://www.psychology.com.co/';
+  const recommendedBook = (() => {
+    if (!category) {
+      return fallbackCatalog[0] ?? null;
     }
-  }, []);
+
+    const directMatch = fallbackCatalog.find(
+      (entry) => entry.category.toLowerCase() === category.toLowerCase()
+    );
+
+    if (directMatch) {
+      return directMatch;
+    }
+
+    return fallbackCatalog[0] ?? null;
+  })();
 
   const shareMessage = category
     ? encodeURIComponent(`MindMatch highlighted ${category} as my focus area. Explore tailored support at Psychology.com.co.`)
@@ -69,10 +79,50 @@ function ResultPage({ scores, category, onRetake, onBackHome }) {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-white p-6 text-center text-slate-600 shadow-md">
-        Redirecting you to <a href="https://www.psychology.com.co/" className="font-semibold text-primary underline" target="_blank" rel="noopener noreferrer">Psychology.com.co</a>{' '}
-        for more tailored guidance.
-      </div>
+      {recommendedBook ? (
+        <div className="grid gap-6 rounded-3xl bg-white p-6 shadow-md md:grid-cols-[1.2fr_1fr] md:p-8">
+          <div className="space-y-4 text-slate-700">
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary-dark">Suggested next step</p>
+            <h3 className="font-display text-2xl font-bold text-slate-900">
+              Dive deeper with “{recommendedBook.title}”
+            </h3>
+            <p className="font-medium text-slate-600">by {recommendedBook.author}</p>
+            <p>{recommendedBook.summary}</p>
+            <p className="text-sm text-slate-500">
+              Curated from Psychology.com.co to support your work around {category ? category.toLowerCase() : 'your focus area'}.
+            </p>
+            <motion.a
+              href={recommendedBook.purchaseLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-white shadow-lg shadow-primary/30 transition hover:bg-primary-dark"
+            >
+              Buy now on Psychology.com.co
+            </motion.a>
+          </div>
+          <div className="flex items-center justify-center rounded-2xl bg-primary/5 p-6 text-center text-sm text-primary-dark">
+            <p>
+              Looking for more options? Explore additional expert resources and guided workbooks tailored to emotional
+              wellbeing at Psychology.com.co.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-3xl bg-white p-6 text-center text-slate-600 shadow-md">
+          Explore curated resources and workbooks at{' '}
+          <a
+            href="https://www.psychology.com.co/"
+            className="font-semibold text-primary underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Psychology.com.co
+          </a>{' '}
+          to continue your journey.
+        </div>
+      )}
 
       <div className="flex flex-wrap items-center gap-4 rounded-3xl bg-white/90 p-5 shadow-inner">
         <span className="text-sm font-semibold text-slate-600">Share your result</span>

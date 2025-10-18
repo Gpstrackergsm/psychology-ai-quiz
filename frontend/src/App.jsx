@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import LandingPage from './components/LandingPage.jsx';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
 import quizData from './data/quizData.js';
@@ -43,36 +44,7 @@ function App() {
       <div className="mx-auto max-w-5xl px-4 py-12 md:px-8">
         <AnimatePresence mode="wait">
           {stage === stages.landing && (
-            <motion.section
-              key="landing"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="rounded-3xl bg-white/90 p-10 shadow-xl backdrop-blur"
-            >
-              <div className="space-y-6 text-center md:space-y-8">
-                <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary-dark">
-                  Meet MindMatch
-                </span>
-                <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
-                  hello
-                </h1>
-                <p className="mx-auto max-w-2xl text-lg text-slate-600 md:text-xl">
-                  Answer a few simple questions and discover the emotional focus area where support can make the biggest impact
-                  — anxiety, trauma, grief, motivation, or relationships.
-                </p>
-                <motion.button
-                  type="button"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handleQuizStart}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white shadow-lg shadow-primary/30 transition hover:bg-primary-dark"
-                >
-                  Start the Quiz
-                </motion.button>
-              </div>
-            </motion.section>
+            <LandingPage containerVariants={containerVariants} onStart={handleQuizStart} />
           )}
 
           {stage === stages.quiz && (
