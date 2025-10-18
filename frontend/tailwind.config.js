@@ -5,12 +5,12 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#16a34a',
-          light: '#4ade80',
-          dark: '#15803d'
+          DEFAULT: '#2563eb',
+          light: '#60a5fa',
+          dark: '#1d4ed8'
         },
-        accent: '#22c55e',
-        soft: '#ecfdf5'
+        accent: '#f97316',
+        soft: '#eff6ff'
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'sans-serif'],

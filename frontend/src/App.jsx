@@ -4,40 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
 import quizData from './data/quizData.js';
-import fallbackCatalog from './data/bookCatalogFallback.js';
-import allowedProductUrls from '@shared/allowedProductUrls.json';
-
-const ALLOWED_PRODUCT_PREFIX = 'https://www.psychology.com.co/product-page/';
-
-const allowedUrlSet = new Set(
-  Array.isArray(allowedProductUrls)
-    ? allowedProductUrls
-        .map((url) => (typeof url === 'string' ? url.trim() : ''))
-        .filter((url) => url.startsWith(ALLOWED_PRODUCT_PREFIX))
-    : []
-);
-
-function sanitizeCatalogEntry(entry) {
-  if (!entry || typeof entry !== 'object') {
-    return null;
-  }
-
-  const sanitized = { ...entry };
-  const link = typeof sanitized.purchaseLink === 'string' ? sanitized.purchaseLink.trim() : '';
-  sanitized.purchaseLink = allowedUrlSet.has(link) ? link : null;
-
-  return sanitized.purchaseLink ? sanitized : null;
-}
-
-function sanitizeCatalog(catalog) {
-  if (!Array.isArray(catalog)) {
-    return [];
-  }
-
-  return catalog
-    .map((item) => sanitizeCatalogEntry(item))
-    .filter((item) => item !== null);
-}
 
 const stages = {
   landing: 'landing',
@@ -52,60 +18,29 @@ const containerVariants = {
 };
 
 function App() {
-  const apiBaseUrl = useMemo(() => {
-    const envUrl = import.meta.env.VITE_API_BASE_URL?.trim();
-    if (envUrl) {
-      return envUrl.replace(/\/$/, '');
-    }
-
-    if (typeof window === 'undefined') {
-      return '';
-    }
-
-    const { protocol, hostname, port } = window.location;
-
-    if (!port) {
-      return `${protocol}//${hostname}`;
-    }
-
-    if (port === '5174') {
-      return `${protocol}//${hostname}:4000`;
-    }
-
-    return `${protocol}//${hostname}:${port}`;
-  }, []);
-
   const [stage, setStage] = useState(stages.landing);
   const [scores, setScores] = useState({});
   const [currentCategory, setCurrentCategory] = useState(null);
   const [books, setBooks] = useState([]);
   const [loadingBooks, setLoadingBooks] = useState(true);
-  const [catalogStatus, setCatalogStatus] = useState({ type: 'idle', message: '' });
+  const [bookError, setBookError] = useState('');
 
   useEffect(() => {
     async function fetchBooks() {
       try {
         setLoadingBooks(true);
-        const endpoint = apiBaseUrl ? `${apiBaseUrl}/api/books` : '/api/books';
-        const response = await axios.get(endpoint);
-        setBooks(sanitizeCatalog(response.data));
-        setCatalogStatus({ type: 'idle', message: '' });
+        const response = await axios.get('/api/books');
+        setBooks(response.data);
       } catch (error) {
         console.error('Failed to fetch books', error);
-        setBooks(sanitizeCatalog(fallbackCatalog));
-        setCatalogStatus({
-          type: 'fallback',
-          message: apiBaseUrl
-            ? `We couldn't reach the MindMatch book catalog at ${apiBaseUrl}, so we're showing our built-in suggestions instead. Start the backend (npm run dev in /backend) or update VITE_API_BASE_URL for live updates.`
-            : `We couldn't reach the MindMatch book catalog, so we're showing our built-in suggestions instead. Start the backend (npm run dev in /backend) for the latest recommendations.`
-        });
+        setBookError('We had trouble loading book recommendations. Please try again later.');
       } finally {
         setLoadingBooks(false);
       }
     }
 
     fetchBooks();
-  }, [apiBaseUrl]);
+  }, []);
 
   const topRecommendation = useMemo(() => {
     if (!currentCategory) return null;
@@ -194,7 +129,7 @@ function App() {
                 category={currentCategory}
                 recommendation={topRecommendation}
                 loadingBooks={loadingBooks}
-                catalogStatus={catalogStatus}
+                bookError={bookError}
                 onRetake={handleRetake}
                 onBackHome={() => setStage(stages.landing)}
               />

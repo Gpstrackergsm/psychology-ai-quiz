@@ -44,14 +44,6 @@ cd backend
 npm run dev
 ```
 
-Copy the provided frontend environment template and update it if you are running the backend on a custom host or port:
-
-```bash
-cd frontend
-cp .env.example .env
-# edit .env if needed
-```
-
 In a new terminal, launch the React development server:
 
 ```bash
@@ -59,9 +51,7 @@ cd frontend
 npm run dev
 ```
 
-The frontend is available at `http://localhost:5174`. API requests default to `http://localhost:4000`; adjust `VITE_API_BASE_URL` in `frontend/.env` if your backend runs elsewhere.
-
-If the backend is offline, MindMatch will automatically fall back to its bundled recommendation set so you can still explore the experience. Start the backend whenever you are ready to serve the latest catalog from `backend/data/books.json`.
+The frontend is available at `http://localhost:5173` and automatically proxies API requests to `http://localhost:4000`.
 
 ### Building for Production
 
@@ -75,14 +65,6 @@ The output will be generated in `frontend/dist`.
 ## Customizing Books
 
 Book recommendations live in [`backend/data/books.json`](backend/data/books.json). Each entry contains a `category`, `title`, `author`, `summary`, `coverImage`, and `purchaseLink`. Add or edit items to expand MindMatch with new focus areas or titles.
-
-> **Important:** MindMatch only surfaces purchase links that are listed in [`shared/allowedProductUrls.json`](shared/allowedProductUrls.json). Any URL not in that allowlist (or not starting with `https://www.psychology.com.co/product-page/`) is stripped before reaching the UI.
-
-When you add a new title, be sure to:
-
-1. Confirm the product exists on [psychology.com.co](https://www.psychology.com.co/).
-2. Append its product page URL to [`shared/allowedProductUrls.json`](shared/allowedProductUrls.json).
-3. Reference that exact URL in both the backend catalog and any frontend fallback data so the recommendation can be displayed.
 
 ## Quiz Content
 
