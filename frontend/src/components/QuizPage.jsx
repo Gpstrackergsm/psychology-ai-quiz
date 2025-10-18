@@ -2,8 +2,6 @@ import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ProgressBar from './ProgressBar.jsx';
 import QuestionCard from './QuestionCard.jsx';
-import SiteFooter from './SiteFooter.jsx';
-import SiteHeader from './SiteHeader.jsx';
 
 function QuizPage({ containerVariants, questions, onComplete, onExit }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,9 +41,8 @@ function QuizPage({ containerVariants, questions, onComplete, onExit }) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="space-y-12 rounded-3xl bg-white/95 p-6 shadow-xl backdrop-blur md:p-12"
+      className="space-y-12"
     >
-      <SiteHeader breadcrumbs={['Self Tests', 'MindMatch Focus Finder']} />
 
       <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[2fr_1fr] lg:items-start">
         <div className="space-y-8">
@@ -128,7 +125,6 @@ function QuizPage({ containerVariants, questions, onComplete, onExit }) {
         </aside>
       </div>
 
-      <SiteFooter />
     </motion.section>
   );
 }

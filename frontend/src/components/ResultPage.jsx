@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import BookSuggestion from './BookSuggestion.jsx';
-import SiteFooter from './SiteFooter.jsx';
-import SiteHeader from './SiteHeader.jsx';
 import fallbackCatalog from '../data/bookCatalogFallback.js';
 
 function ResultPage({ containerVariants, scores, category, onRetake, onBackHome }) {
@@ -39,9 +37,8 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="space-y-12 rounded-3xl bg-white/95 p-6 shadow-xl backdrop-blur md:p-12"
+      className="space-y-12"
     >
-      <SiteHeader breadcrumbs={['Self Tests', 'MindMatch Focus Finder', 'Your Results']} />
 
       <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[2fr_1fr] lg:items-start">
         <div className="space-y-8">
@@ -174,8 +171,6 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
           </div>
         </aside>
       </div>
-
-      <SiteFooter />
     </motion.section>
   );
 }
