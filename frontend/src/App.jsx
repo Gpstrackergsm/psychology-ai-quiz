@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
 import quizData from './data/quizData.js';
+import fallbackCatalog from './data/bookCatalogFallback.js';
 
 const stages = {
   landing: 'landing',
@@ -46,7 +47,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [books, setBooks] = useState([]);
   const [loadingBooks, setLoadingBooks] = useState(true);
-  const [bookError, setBookError] = useState('');
+  const [catalogStatus, setCatalogStatus] = useState({ type: 'idle', message: '' });
 
   useEffect(() => {
     async function fetchBooks() {
@@ -55,13 +56,16 @@ function App() {
         const endpoint = apiBaseUrl ? `${apiBaseUrl}/api/books` : '/api/books';
         const response = await axios.get(endpoint);
         setBooks(response.data);
+        setCatalogStatus({ type: 'idle', message: '' });
       } catch (error) {
         console.error('Failed to fetch books', error);
-        setBookError(
-          apiBaseUrl
-            ? `We could not reach the MindMatch book catalog at ${apiBaseUrl}. Make sure the backend server is running (npm run dev in /backend) or update VITE_API_BASE_URL.`
-            : 'We could not reach the MindMatch book catalog. Start the backend server (npm run dev in /backend) and refresh to load recommendations.'
-        );
+        setBooks(fallbackCatalog);
+        setCatalogStatus({
+          type: 'fallback',
+          message: apiBaseUrl
+            ? `We couldn't reach the MindMatch book catalog at ${apiBaseUrl}, so we're showing our built-in suggestions instead. Start the backend (npm run dev in /backend) or update VITE_API_BASE_URL for live updates.`
+            : `We couldn't reach the MindMatch book catalog, so we're showing our built-in suggestions instead. Start the backend (npm run dev in /backend) for the latest recommendations.`
+        });
       } finally {
         setLoadingBooks(false);
       }
@@ -157,7 +161,7 @@ function App() {
                 category={currentCategory}
                 recommendation={topRecommendation}
                 loadingBooks={loadingBooks}
-                bookError={bookError}
+                catalogStatus={catalogStatus}
                 onRetake={handleRetake}
                 onBackHome={() => setStage(stages.landing)}
               />

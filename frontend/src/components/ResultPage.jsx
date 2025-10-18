@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import BookSuggestion from './BookSuggestion.jsx';
 
-function ResultPage({ scores, category, recommendation, loadingBooks, bookError, onRetake, onBackHome }) {
+function ResultPage({ scores, category, recommendation, loadingBooks, catalogStatus, onRetake, onBackHome }) {
   const shareMessage = category
     ? encodeURIComponent(`MindMatch matched me with a ${category} support read! Check out MindMatch: Find Your Book.`)
     : encodeURIComponent('Discover psychology books tailored to your mood with MindMatch: Find Your Book.');
@@ -65,8 +65,15 @@ function ResultPage({ scores, category, recommendation, loadingBooks, bookError,
 
       {loadingBooks ? (
         <div className="rounded-3xl bg-white p-6 text-center text-slate-500 shadow-md">Loading book recommendation...</div>
-      ) : bookError ? (
-        <div className="rounded-3xl bg-red-50 p-6 text-center text-red-600 shadow-md">{bookError}</div>
+      ) : catalogStatus?.type === 'fallback' ? (
+        <div className="space-y-4">
+          <div className="rounded-3xl bg-amber-50 p-6 text-center text-amber-700 shadow-md">
+            {catalogStatus.message}
+          </div>
+          <BookSuggestion recommendation={recommendation} />
+        </div>
+      ) : catalogStatus?.type === 'error' ? (
+        <div className="rounded-3xl bg-red-50 p-6 text-center text-red-600 shadow-md">{catalogStatus.message}</div>
       ) : (
         <BookSuggestion recommendation={recommendation} />
       )}
