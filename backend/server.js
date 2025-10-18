@@ -3,16 +3,44 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
+const allowedProductUrls = require('../shared/allowedProductUrls.json');
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 const DATA_PATH = path.join(__dirname, 'data', 'books.json');
+const allowedUrlSet = new Set(
+  Array.isArray(allowedProductUrls)
+    ? allowedProductUrls
+        .map((url) => (typeof url === 'string' ? url.trim() : ''))
+        .filter((url) => url.startsWith('https://www.psychology.com.co/product-page/'))
+    : []
+);
 
 app.use(cors());
 app.use(express.json());
 
+function sanitizeBook(book) {
+  if (!book || typeof book !== 'object') {
+    return null;
+  }
+
+  const sanitized = { ...book };
+  const rawLink = typeof sanitized.purchaseLink === 'string' ? sanitized.purchaseLink.trim() : '';
+
+  sanitized.purchaseLink = allowedUrlSet.has(rawLink) ? rawLink : null;
+
+  return sanitized.purchaseLink ? sanitized : null;
+}
+
 function loadBooks() {
   const raw = fs.readFileSync(DATA_PATH, 'utf-8');
-  return JSON.parse(raw);
+  const data = JSON.parse(raw);
+
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  return data.map((book) => sanitizeBook(book)).filter(Boolean);
 }
 
 app.get('/api/books', (req, res) => {

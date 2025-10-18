@@ -1,3 +1,13 @@
+import allowedProductUrls from '@shared/allowedProductUrls.json';
+
+const allowedUrlSet = new Set(
+  Array.isArray(allowedProductUrls)
+    ? allowedProductUrls
+        .map((url) => (typeof url === 'string' ? url.trim() : ''))
+        .filter((url) => url.startsWith('https://www.psychology.com.co/product-page/'))
+    : []
+);
+
 const fallbackCatalog = [
   {
     category: 'Anxiety',
@@ -49,6 +59,6 @@ const fallbackCatalog = [
     purchaseLink:
       'https://www.psychology.com.co/product-page/daring-greatly-how-the-courage-to-be-vulnerable-transforms-the-way-we-live'
   }
-];
+].filter((entry) => allowedUrlSet.has(entry.purchaseLink));
 
 export default fallbackCatalog;

@@ -76,7 +76,13 @@ The output will be generated in `frontend/dist`.
 
 Book recommendations live in [`backend/data/books.json`](backend/data/books.json). Each entry contains a `category`, `title`, `author`, `summary`, `coverImage`, and `purchaseLink`. Add or edit items to expand MindMatch with new focus areas or titles.
 
-> **Important:** MindMatch only surfaces purchase links from [`psychology.com.co`](https://www.psychology.com.co/). Any links that do not start with `https://www.psychology.com.co/product-page/` are ignored at runtime.
+> **Important:** MindMatch only surfaces purchase links that are listed in [`shared/allowedProductUrls.json`](shared/allowedProductUrls.json). Any URL not in that allowlist (or not starting with `https://www.psychology.com.co/product-page/`) is stripped before reaching the UI.
+
+When you add a new title, be sure to:
+
+1. Confirm the product exists on [psychology.com.co](https://www.psychology.com.co/).
+2. Append its product page URL to [`shared/allowedProductUrls.json`](shared/allowedProductUrls.json).
+3. Reference that exact URL in both the backend catalog and any frontend fallback data so the recommendation can be displayed.
 
 ## Quiz Content
 

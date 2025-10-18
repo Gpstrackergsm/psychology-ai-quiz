@@ -5,8 +5,17 @@ import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
 import quizData from './data/quizData.js';
 import fallbackCatalog from './data/bookCatalogFallback.js';
+import allowedProductUrls from '@shared/allowedProductUrls.json';
 
 const ALLOWED_PRODUCT_PREFIX = 'https://www.psychology.com.co/product-page/';
+
+const allowedUrlSet = new Set(
+  Array.isArray(allowedProductUrls)
+    ? allowedProductUrls
+        .map((url) => (typeof url === 'string' ? url.trim() : ''))
+        .filter((url) => url.startsWith(ALLOWED_PRODUCT_PREFIX))
+    : []
+);
 
 function sanitizeCatalogEntry(entry) {
   if (!entry || typeof entry !== 'object') {
@@ -15,9 +24,9 @@ function sanitizeCatalogEntry(entry) {
 
   const sanitized = { ...entry };
   const link = typeof sanitized.purchaseLink === 'string' ? sanitized.purchaseLink.trim() : '';
-  sanitized.purchaseLink = link.startsWith(ALLOWED_PRODUCT_PREFIX) ? link : null;
+  sanitized.purchaseLink = allowedUrlSet.has(link) ? link : null;
 
-  return sanitized;
+  return sanitized.purchaseLink ? sanitized : null;
 }
 
 function sanitizeCatalog(catalog) {
