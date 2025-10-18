@@ -33,7 +33,9 @@ function App() {
         setBooks(response.data);
       } catch (error) {
         console.error('Failed to fetch books', error);
-        setBookError('We had trouble loading book recommendations. Please try again later.');
+        setBookError(
+          'We could not reach the MindMatch book catalog. Start the backend server (npm run dev in /backend) and refresh to load recommendations.'
+        );
       } finally {
         setLoadingBooks(false);
       }
