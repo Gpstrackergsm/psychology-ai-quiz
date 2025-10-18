@@ -1,10 +1,16 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import BookSuggestion from './BookSuggestion.jsx';
 
-function ResultPage({ scores, category, recommendation, loadingBooks, bookError, onRetake, onBackHome }) {
+function ResultPage({ scores, category, onRetake, onBackHome }) {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.location.href = 'https://www.psychology.com.co/';
+    }
+  }, []);
+
   const shareMessage = category
-    ? encodeURIComponent(`MindMatch matched me with a ${category} support read! Check out MindMatch: Find Your Book.`)
-    : encodeURIComponent('Discover psychology books tailored to your mood with MindMatch: Find Your Book.');
+    ? encodeURIComponent(`MindMatch highlighted ${category} as my focus area. Explore tailored support at Psychology.com.co.`)
+    : encodeURIComponent('Discover insights about your emotional focus area with MindMatch.');
   const shareUrl = encodeURIComponent(
     typeof window !== 'undefined' ? window.location.href : 'https://mindmatch.local'
   );
@@ -14,7 +20,7 @@ function ResultPage({ scores, category, recommendation, loadingBooks, bookError,
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">Your MindMatch Result</h1>
-          <p className="text-slate-600">Here’s what your responses highlight and a book to guide your next step.</p>
+          <p className="text-slate-600">Here’s what your responses highlight—we’ll guide you to professional support next.</p>
         </div>
         <div className="flex gap-3">
           <motion.button
@@ -46,8 +52,8 @@ function ResultPage({ scores, category, recommendation, loadingBooks, bookError,
           </h2>
           <p>
             {category
-              ? `Here’s a book that can help you navigate ${category.toLowerCase()} with confidence and compassion.`
-              : 'Try retaking the quiz to receive a tailored book recommendation.'}
+              ? `We’re redirecting you to resources that can help you navigate ${category.toLowerCase()} with confidence and compassion.`
+              : 'Try retaking the quiz to receive clearer insight into your current focus area.'}
           </p>
         </div>
         <div className="space-y-4 rounded-2xl bg-white/70 p-4 shadow-inner">
@@ -63,13 +69,10 @@ function ResultPage({ scores, category, recommendation, loadingBooks, bookError,
         </div>
       </div>
 
-      {loadingBooks ? (
-        <div className="rounded-3xl bg-white p-6 text-center text-slate-500 shadow-md">Loading book recommendation...</div>
-      ) : bookError ? (
-        <div className="rounded-3xl bg-red-50 p-6 text-center text-red-600 shadow-md">{bookError}</div>
-      ) : (
-        <BookSuggestion recommendation={recommendation} />
-      )}
+      <div className="rounded-3xl bg-white p-6 text-center text-slate-600 shadow-md">
+        Redirecting you to <a href="https://www.psychology.com.co/" className="font-semibold text-primary underline" target="_blank" rel="noopener noreferrer">Psychology.com.co</a>{' '}
+        for more tailored guidance.
+      </div>
 
       <div className="flex flex-wrap items-center gap-4 rounded-3xl bg-white/90 p-5 shadow-inner">
         <span className="text-sm font-semibold text-slate-600">Share your result</span>
