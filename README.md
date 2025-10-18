@@ -59,7 +59,7 @@ cd frontend
 npm run dev
 ```
 
-The frontend is available at `http://localhost:5173`. API requests default to `http://localhost:4000`; adjust `VITE_API_BASE_URL` in `frontend/.env` if your backend runs elsewhere.
+The frontend is available at `http://localhost:5174`. API requests default to `http://localhost:4000`; adjust `VITE_API_BASE_URL` in `frontend/.env` if your backend runs elsewhere.
 
 If the backend is offline, MindMatch will automatically fall back to its bundled recommendation set so you can still explore the experience. Start the backend whenever you are ready to serve the latest catalog from `backend/data/books.json`.
 

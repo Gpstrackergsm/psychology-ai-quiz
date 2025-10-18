@@ -68,7 +68,7 @@ function App() {
       return `${protocol}//${hostname}`;
     }
 
-    if (port === '5173') {
+    if (port === '5174') {
       return `${protocol}//${hostname}:4000`;
     }
 
