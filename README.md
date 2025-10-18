@@ -76,6 +76,8 @@ The output will be generated in `frontend/dist`.
 
 Book recommendations live in [`backend/data/books.json`](backend/data/books.json). Each entry contains a `category`, `title`, `author`, `summary`, `coverImage`, and `purchaseLink`. Add or edit items to expand MindMatch with new focus areas or titles.
 
+> **Important:** MindMatch only surfaces purchase links from [`psychology.com.co`](https://www.psychology.com.co/). Any links that do not start with `https://www.psychology.com.co/product-page/` are ignored at runtime.
+
 ## Quiz Content
 
 Quiz questions are stored in [`frontend/src/data/quizData.js`](frontend/src/data/quizData.js). Update prompts, options, categories, or scoring to match your program’s needs.

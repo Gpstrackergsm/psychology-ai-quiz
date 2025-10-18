@@ -14,6 +14,8 @@ function BookSuggestion({ recommendation }) {
     recommendation.summary ||
     `Explore "${recommendation.title}" to support your ${recommendation.category?.toLowerCase() ?? 'well-being'} journey.`;
 
+  const hasPurchaseLink = typeof recommendation.purchaseLink === 'string' && recommendation.purchaseLink.length > 0;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -41,16 +43,22 @@ function BookSuggestion({ recommendation }) {
           {recommendation.author && <p className="text-slate-500">by {recommendation.author}</p>}
         </div>
         <p className="text-base text-slate-600">{summaryText}</p>
-        <motion.a
-          href={recommendation.purchaseLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/40 transition hover:bg-orange-500"
-        >
-          Buy Now
-        </motion.a>
+        {hasPurchaseLink ? (
+          <motion.a
+            href={recommendation.purchaseLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/40 transition hover:bg-orange-500"
+          >
+            Buy Now
+          </motion.a>
+        ) : (
+          <p className="text-sm text-slate-500">
+            Visit <a className="font-semibold text-primary hover:underline" href="https://www.psychology.com.co/" target="_blank" rel="noopener noreferrer">psychology.com.co</a> to explore this title.
+          </p>
+        )}
       </div>
     </motion.div>
   );

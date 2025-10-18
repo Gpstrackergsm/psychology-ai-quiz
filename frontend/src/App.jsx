@@ -6,6 +6,30 @@ import ResultPage from './components/ResultPage.jsx';
 import quizData from './data/quizData.js';
 import fallbackCatalog from './data/bookCatalogFallback.js';
 
+const ALLOWED_PRODUCT_PREFIX = 'https://www.psychology.com.co/product-page/';
+
+function sanitizeCatalogEntry(entry) {
+  if (!entry || typeof entry !== 'object') {
+    return null;
+  }
+
+  const sanitized = { ...entry };
+  const link = typeof sanitized.purchaseLink === 'string' ? sanitized.purchaseLink.trim() : '';
+  sanitized.purchaseLink = link.startsWith(ALLOWED_PRODUCT_PREFIX) ? link : null;
+
+  return sanitized;
+}
+
+function sanitizeCatalog(catalog) {
+  if (!Array.isArray(catalog)) {
+    return [];
+  }
+
+  return catalog
+    .map((item) => sanitizeCatalogEntry(item))
+    .filter((item) => item !== null);
+}
+
 const stages = {
   landing: 'landing',
   quiz: 'quiz',
@@ -55,11 +79,11 @@ function App() {
         setLoadingBooks(true);
         const endpoint = apiBaseUrl ? `${apiBaseUrl}/api/books` : '/api/books';
         const response = await axios.get(endpoint);
-        setBooks(response.data);
+        setBooks(sanitizeCatalog(response.data));
         setCatalogStatus({ type: 'idle', message: '' });
       } catch (error) {
         console.error('Failed to fetch books', error);
-        setBooks(fallbackCatalog);
+        setBooks(sanitizeCatalog(fallbackCatalog));
         setCatalogStatus({
           type: 'fallback',
           message: apiBaseUrl
