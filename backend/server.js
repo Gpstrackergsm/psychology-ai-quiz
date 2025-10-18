@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 const DATA_PATH = path.join(__dirname, 'data', 'books.json');
 
 app.use(cors());
