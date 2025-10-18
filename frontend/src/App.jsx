@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
@@ -21,32 +20,6 @@ function App() {
   const [stage, setStage] = useState(stages.landing);
   const [scores, setScores] = useState({});
   const [currentCategory, setCurrentCategory] = useState(null);
-  const [books, setBooks] = useState([]);
-  const [loadingBooks, setLoadingBooks] = useState(true);
-  const [bookError, setBookError] = useState('');
-
-  useEffect(() => {
-    async function fetchBooks() {
-      try {
-        setLoadingBooks(true);
-        const response = await axios.get('/api/books');
-        setBooks(response.data);
-      } catch (error) {
-        console.error('Failed to fetch books', error);
-        setBookError('We had trouble loading book recommendations. Please try again later.');
-      } finally {
-        setLoadingBooks(false);
-      }
-    }
-
-    fetchBooks();
-  }, []);
-
-  const topRecommendation = useMemo(() => {
-    if (!currentCategory) return null;
-    return books.find((book) => book.category === currentCategory) ?? null;
-  }, [books, currentCategory]);
-
   const handleQuizStart = () => {
     setScores({});
     setStage(stages.quiz);
@@ -86,8 +59,8 @@ function App() {
                   hello
                 </h1>
                 <p className="mx-auto max-w-2xl text-lg text-slate-600 md:text-xl">
-                  Answer a few simple questions and discover the book that matches your current need —
-                  anxiety, trauma, grief, motivation, or relationships.
+                  Answer a few simple questions and discover the emotional focus area where support can make the biggest impact
+                  — anxiety, trauma, grief, motivation, or relationships.
                 </p>
                 <motion.button
                   type="button"
@@ -127,9 +100,6 @@ function App() {
               <ResultPage
                 scores={scores}
                 category={currentCategory}
-                recommendation={topRecommendation}
-                loadingBooks={loadingBooks}
-                bookError={bookError}
                 onRetake={handleRetake}
                 onBackHome={() => setStage(stages.landing)}
               />
