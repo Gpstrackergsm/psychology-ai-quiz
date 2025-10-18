@@ -31,7 +31,7 @@ function BookSuggestion({ recommendation }) {
             className="max-h-60 rounded-2xl shadow-md"
           />
         ) : (
-          <div className="flex h-48 w-48 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 via-white to-accent/20 text-5xl font-bold text-primary-dark shadow-inner">
+          <div className="flex h-48 w-48 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 via-white to-primary-light/20 text-5xl font-bold text-primary-dark shadow-inner">
             {recommendation.title.charAt(0)}
           </div>
         )}
@@ -50,7 +50,7 @@ function BookSuggestion({ recommendation }) {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/40 transition hover:bg-orange-500"
+            className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-primary/40 transition hover:bg-primary-dark"
           >
             Buy Now
           </motion.a>
