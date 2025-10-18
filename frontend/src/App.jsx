@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import LandingPage from './components/LandingPage.jsx';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
@@ -40,42 +40,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen gradient-bg">
-      <div className="mx-auto max-w-5xl px-4 py-12 md:px-8">
+    <div className="min-h-screen bg-slate-100">
+      <div className="mx-auto max-w-6xl px-4 py-12 md:px-8">
         <AnimatePresence mode="wait">
           {stage === stages.landing && (
             <LandingPage containerVariants={containerVariants} onStart={handleQuizStart} />
           )}
 
           {stage === stages.quiz && (
-            <motion.section
-              key="quiz"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="rounded-3xl bg-white/95 p-6 shadow-xl backdrop-blur"
-            >
-              <QuizPage questions={quizData} onComplete={handleQuizComplete} onExit={() => setStage(stages.landing)} />
-            </motion.section>
+            <QuizPage
+              containerVariants={containerVariants}
+              questions={quizData}
+              onComplete={handleQuizComplete}
+              onExit={() => setStage(stages.landing)}
+            />
           )}
 
           {stage === stages.result && (
-            <motion.section
-              key="result"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="rounded-3xl bg-white/95 p-6 shadow-xl backdrop-blur"
-            >
-              <ResultPage
-                scores={scores}
-                category={currentCategory}
-                onRetake={handleRetake}
-                onBackHome={() => setStage(stages.landing)}
-              />
-            </motion.section>
+            <ResultPage
+              containerVariants={containerVariants}
+              scores={scores}
+              category={currentCategory}
+              onRetake={handleRetake}
+              onBackHome={() => setStage(stages.landing)}
+            />
           )}
         </AnimatePresence>
       </div>

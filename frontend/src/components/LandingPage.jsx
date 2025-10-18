@@ -1,12 +1,6 @@
 import { motion } from 'framer-motion';
-
-const navItems = [
-  'Find a Therapist',
-  'Get Help',
-  'Magazine',
-  'Tests',
-  'US'
-];
+import SiteFooter from './SiteFooter.jsx';
+import SiteHeader from './SiteHeader.jsx';
 
 const categoryFilters = ['All', 'Career', 'Health', 'IQ', 'Personality', 'Relationships'];
 
@@ -467,36 +461,7 @@ function LandingPage({ containerVariants, onStart }) {
       exit="exit"
       className="space-y-14 rounded-3xl bg-white/95 p-6 shadow-xl backdrop-blur md:p-12"
     >
-      <header className="border-b border-slate-200 pb-6">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <span className="text-2xl font-semibold text-slate-900">Psychology Today</span>
-            <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 md:flex">
-              {navItems.map((item) => (
-                <a key={item} href="#" className="transition hover:text-primary-dark">
-                  {item}
-                </a>
-              ))}
-              <button
-                type="button"
-                className="rounded-full border border-slate-200 px-4 py-1 text-sm font-semibold text-slate-600 transition hover:border-primary hover:text-primary-dark"
-              >
-                Search
-              </button>
-            </nav>
-          </div>
-          <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-slate-500">
-            <span>United States</span>
-            <span className="text-slate-300">|</span>
-            <span>Tests</span>
-          </div>
-        </div>
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-primary">
-          <span className="font-semibold">Self Tests</span>
-          <span className="text-slate-300">&gt;</span>
-          <span>Mental Health and Personality Tests</span>
-        </div>
-      </header>
+      <SiteHeader breadcrumbs={['Self Tests', 'Mental Health and Personality Tests']} />
 
       <section className="space-y-4">
         <h1 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
@@ -584,54 +549,7 @@ function LandingPage({ containerVariants, onStart }) {
         </div>
       </section>
 
-      <section className="space-y-4 rounded-3xl bg-slate-50 p-6">
-        <p className="text-sm leading-relaxed text-slate-600">
-          Psychology Today’s online self-tests are intended for informational purposes only and are not diagnostic tools. Psycholo
-gy Today does not capture or store personally identifiable information, and your identity cannot be determined from your respons
-es. Aggregated self-test responses are stored to improve the tests and provide performance comparisons. Psychology Today uses thi
-rd party cookies such as Google Analytics to collect visitor data on this page without sharing any personal data, ensuring your i
-dentity cannot be determined from your visit. There are no advertising partners included on these self-test pages. If you wish to
- remove cookies from this site or opt out of data sharing, please click ‘Do not share or sell my personal information’ below. For
-a reliable medical diagnosis, please consult a professional.
-        </p>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
-          <span>Psychology Today</span>
-          <span>Facebook</span>
-          <span>Bluesky</span>
-          <span>X</span>
-          <span>Instagram</span>
-          <span>LinkedIn</span>
-        </div>
-      </section>
-
-      <section className="space-y-4 text-xs text-slate-500">
-        <div className="flex flex-wrap gap-3">
-          <span>About &amp; Policies</span>
-          <span>About</span>
-          <span>Editorial Process</span>
-          <span>Privacy</span>
-          <span>Terms</span>
-          <span>Accessibility</span>
-          <span>Do Not Sell Or Share My Personal Information</span>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <span>Get Help</span>
-          <span>Find a Therapist</span>
-          <span>Find a Treatment Center</span>
-          <span>Find a Psychiatrist</span>
-          <span>Find a Support Group</span>
-          <span>Find Online Therapy</span>
-        </div>
-        <div className="flex flex-wrap gap-3 text-[11px] uppercase tracking-widest">
-          <span>United States</span>
-          <span>September 2025 magazine cover</span>
-          <span>July 2025 magazine cover</span>
-          <span>May 2025 magazine cover</span>
-          <span>March 2025 magazine cover</span>
-          <span>January 2025 magazine cover</span>
-        </div>
-        <p className="text-[11px] text-slate-400">Psychology Today © 2025 Sussex Publishers, LLC</p>
-      </section>
+      <SiteFooter />
 
       <section className="rounded-3xl bg-primary/10 p-6 text-center">
         <h2 className="font-display text-2xl font-semibold text-slate-900 md:text-3xl">Ready to start your own assessment?</h2>
