@@ -83,7 +83,7 @@ function App() {
                   Meet MindMatch
                 </span>
                 <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
-                  Find the Right Psychology Book for You
+                  hello
                 </h1>
                 <p className="mx-auto max-w-2xl text-lg text-slate-600 md:text-xl">
                   Answer a few simple questions and discover the book that matches your current need —

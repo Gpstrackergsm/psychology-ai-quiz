@@ -7,6 +7,6 @@ body {
 }
 
 .gradient-bg {
-  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(14, 116, 144, 0.12), transparent 50%);
+  background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 50%);
 }
