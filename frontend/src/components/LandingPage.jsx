@@ -59,6 +59,7 @@ function LandingPage({ containerVariants, onStart }) {
       exit="exit"
       className="space-y-20 rounded-3xl bg-white/90 p-10 shadow-xl backdrop-blur md:p-14"
     >
+      {/* Hero Section */}
       <div className="space-y-6 text-center md:space-y-8">
         <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary-dark">
           Meet MindMatch
@@ -67,7 +68,9 @@ function LandingPage({ containerVariants, onStart }) {
           Discover Your Personalized Mental Wellness Roadmap
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-slate-600 md:text-xl">
-          MindMatch is an adaptive self-discovery experience designed to translate how you are feeling into a clear plan of action. Take 5 thoughtful minutes to reflect, and we will connect you with the emotional growth area—and Psychology.com.co resource—that will serve you best right now.
+          MindMatch is an adaptive self-discovery experience designed to translate how you are feeling into a clear plan of
+          action. Take 5 thoughtful minutes to reflect, and we will connect you with the emotional growth area—and
+          Psychology.com.co resource—that will serve you best right now.
         </p>
         <div className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <motion.button
@@ -85,6 +88,7 @@ function LandingPage({ containerVariants, onStart }) {
         </div>
       </div>
 
+      {/* Feature Highlights */}
       <div className="space-y-10">
         <div className="grid gap-6 md:grid-cols-3">
           {featureHighlights.map((feature) => (
@@ -98,12 +102,15 @@ function LandingPage({ containerVariants, onStart }) {
           ))}
         </div>
 
+        {/* Methodology Section */}
         <div className="rounded-3xl bg-gradient-to-r from-primary/10 via-white to-primary/10 p-8 text-left shadow-inner md:p-10">
           <h2 className="font-display text-2xl font-bold text-slate-900 md:text-3xl">
             How the MindMatch methodology works
           </h2>
           <p className="mt-4 max-w-3xl text-base text-slate-600">
-            We combine clinical expertise with coaching best practices to illuminate the next best step for your emotional wellbeing. Every result is grounded in modern psychology and delivered with warmth, clarity, and respect for your lived experience.
+            We combine clinical expertise with coaching best practices to illuminate the next best step for your emotional
+            wellbeing. Every result is grounded in modern psychology and delivered with warmth, clarity, and respect for your
+            lived experience.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {methodologyPillars.map((pillar) => (
@@ -115,26 +122,23 @@ function LandingPage({ containerVariants, onStart }) {
           </div>
         </div>
 
+        {/* Testimonials Section */}
         <div className="grid gap-6 md:grid-cols-[1.5fr,1fr]">
           <div className="rounded-3xl border border-slate-200 bg-white/80 p-8">
-            <h2 className="font-display text-2xl font-bold text-slate-900 md:text-3xl">What you will walk away with</h2>
+            <h2 className="font-display text-2xl font-bold text-slate-900 md:text-3xl">
+              What you will walk away with
+            </h2>
             <ul className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600">
               <li className="flex gap-3">
-                <span className="mt-1 text-lg" aria-hidden="true">
-                  ✅
-                </span>
+                <span className="mt-1 text-lg" aria-hidden="true">✅</span>
                 A prioritized emotional focus area—whether anxiety resilience, trauma healing, grief integration, motivation, or relationship harmony.
               </li>
               <li className="flex gap-3">
-                <span className="mt-1 text-lg" aria-hidden="true">
-                  ✅
-                </span>
+                <span className="mt-1 text-lg" aria-hidden="true">✅</span>
                 Language you can share with therapists, coaches, or trusted friends to describe what you are navigating and what support feels right.
               </li>
               <li className="flex gap-3">
-                <span className="mt-1 text-lg" aria-hidden="true">
-                  ✅
-                </span>
+                <span className="mt-1 text-lg" aria-hidden="true">✅</span>
                 A curated workbook recommendation from Psychology.com.co to help you deepen insights with guided exercises and professional wisdom.
               </li>
             </ul>
@@ -144,7 +148,8 @@ function LandingPage({ containerVariants, onStart }) {
             <div>
               <h2 className="font-display text-2xl font-semibold">Trusted by reflective professionals</h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-200">
-                Leaders, parents, founders, and students across Colombia lean on MindMatch for quick clarity between therapy sessions or before starting a new support relationship.
+                Leaders, parents, founders, and students across Colombia lean on MindMatch for quick clarity between therapy
+                sessions or before starting a new support relationship.
               </p>
             </div>
             <div className="space-y-4">
@@ -160,10 +165,14 @@ function LandingPage({ containerVariants, onStart }) {
           </div>
         </div>
 
+        {/* CTA Section */}
         <div className="rounded-3xl bg-primary/10 p-8 text-center shadow-inner md:p-12">
-          <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">Invest a few minutes in your emotional clarity today</h2>
+          <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">
+            Invest a few minutes in your emotional clarity today
+          </h2>
           <p className="mt-4 text-base text-slate-600 md:text-lg">
-            Your answers remain private, and your insights are immediately actionable. Take the quiz now and explore a workbook that can support your next chapter.
+            Your answers remain private, and your insights are immediately actionable. Take the quiz now and explore a workbook
+            that can support your next chapter.
           </p>
           <motion.button
             type="button"
