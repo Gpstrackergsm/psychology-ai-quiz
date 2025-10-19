@@ -25,6 +25,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(null);
 
   const handleQuizStart = () => {
+    setCurrentCategory(null);
     setScores({});
     setStage(stages.quiz);
   };
@@ -51,7 +52,7 @@ function App() {
   const shellProps = stageShellProps[stage] ?? defaultShellProps;
 
   return (
-    <div className="min-h-screen gradient-bg py-10">
+    <div className="min-h-screen bg-slate-100 py-10">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SiteShell {...shellProps}>
           <AnimatePresence mode="wait">
@@ -63,10 +64,7 @@ function App() {
               exit="exit"
             >
               {stage === stages.landing && (
-                <LandingPage
-                  containerVariants={containerVariants}
-                  onStart={handleQuizStart}
-                />
+                <LandingPage containerVariants={containerVariants} onStart={handleQuizStart} />
               )}
 
               {stage === stages.quiz && (
