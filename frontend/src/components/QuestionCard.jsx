@@ -12,14 +12,14 @@ function QuestionCard({ question, onSelect }) {
       >
         {question.prompt}
       </motion.h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-3">
         {question.options.map((option) => (
           <motion.button
             key={option.id}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => onSelect(option)}
-            className="group flex items-start gap-3 rounded-2xl border border-transparent bg-slate-50 p-5 text-left text-slate-700 shadow-sm transition hover:border-primary/40 hover:bg-white hover:shadow-lg"
+            className="group flex w-full items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-left text-slate-700 shadow-sm transition hover:border-primary/50 hover:shadow-md"
           >
             <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
               {option.label}
