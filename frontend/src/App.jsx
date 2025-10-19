@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import LandingPage from './components/LandingPage.jsx';
 import QuizPage from './components/QuizPage.jsx';
@@ -53,6 +53,12 @@ function App() {
     setScores({});
     setStage(stages.quiz);
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [stage]);
 
   const shellProps = shellPropsByStage[stage] ?? defaultShellProps;
 

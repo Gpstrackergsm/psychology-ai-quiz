@@ -1,27 +1,31 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import BookSuggestion from './BookSuggestion.jsx';
 import fallbackCatalog from '../data/bookCatalogFallback.js';
 
 function ResultPage({ containerVariants, scores, category, onRetake, onBackHome }) {
-  const recommendedBook = (() => {
+  const recommendedBook = useMemo(() => {
     if (!category) {
       return fallbackCatalog[0] ?? null;
     }
 
+    const normalizedCategory = category.toLowerCase();
     const directMatch = fallbackCatalog.find(
-      (entry) => entry.category.toLowerCase() === category.toLowerCase()
+      (entry) => entry.category.toLowerCase() === normalizedCategory
     );
 
-    if (directMatch) {
-      return directMatch;
+    return directMatch ?? fallbackCatalog[0] ?? null;
+  }, [category]);
+
+  const sortedScoreEntries = useMemo(() => {
+    const entries = Object.entries(scores);
+
+    if (entries.length === 0) {
+      return [];
     }
 
-    return fallbackCatalog[0] ?? null;
-  })();
-
-  const scoreEntries = Object.entries(scores);
-  const sortedScoreEntries =
-    scoreEntries.length > 0 ? [...scoreEntries].sort((a, b) => b[1] - a[1]) : [];
+    return entries.sort((a, b) => b[1] - a[1]);
+  }, [scores]);
 
   const shareMessage = category
     ? encodeURIComponent(
