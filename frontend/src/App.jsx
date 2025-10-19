@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import LandingPage from './components/LandingPage.jsx';
 import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
@@ -36,6 +36,7 @@ function App() {
   const [stage, setStage] = useState(stages.landing);
   const [scores, setScores] = useState({});
   const [currentCategory, setCurrentCategory] = useState(null);
+
   const handleQuizStart = () => {
     setScores({});
     setStage(stages.quiz);
@@ -67,28 +68,36 @@ function App() {
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <AnimatePresence mode="wait">
           <SiteShell key={stage} {...shellProps}>
-            {stage === stages.landing && (
-              <LandingPage containerVariants={containerVariants} onStart={handleQuizStart} />
-            )}
+            <motion.div
+              key={stage}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {stage === stages.landing && (
+                <LandingPage containerVariants={containerVariants} onStart={handleQuizStart} />
+              )}
 
-            {stage === stages.quiz && (
-              <QuizPage
-                containerVariants={containerVariants}
-                questions={quizData}
-                onComplete={handleQuizComplete}
-                onExit={() => setStage(stages.landing)}
-              />
-            )}
+              {stage === stages.quiz && (
+                <QuizPage
+                  containerVariants={containerVariants}
+                  questions={quizData}
+                  onComplete={handleQuizComplete}
+                  onExit={() => setStage(stages.landing)}
+                />
+              )}
 
-            {stage === stages.result && (
-              <ResultPage
-                containerVariants={containerVariants}
-                scores={scores}
-                category={currentCategory}
-                onRetake={handleRetake}
-                onBackHome={() => setStage(stages.landing)}
-              />
-            )}
+              {stage === stages.result && (
+                <ResultPage
+                  containerVariants={containerVariants}
+                  scores={scores}
+                  category={currentCategory}
+                  onRetake={handleRetake}
+                  onBackHome={() => setStage(stages.landing)}
+                />
+              )}
+            </motion.div>
           </SiteShell>
         </AnimatePresence>
       </div>
