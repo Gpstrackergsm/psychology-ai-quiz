@@ -53,8 +53,8 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-100 py-10">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <AnimatePresence mode="wait">
-          <SiteShell key={stage} {...shellProps}>
+        <SiteShell {...shellProps}>
+          <AnimatePresence mode="wait">
             <motion.div
               key={stage}
               variants={containerVariants}
@@ -85,8 +85,8 @@ function App() {
                 />
               )}
             </motion.div>
-          </SiteShell>
-        </AnimatePresence>
+          </AnimatePresence>
+        </SiteShell>
       </div>
     </div>
   );
