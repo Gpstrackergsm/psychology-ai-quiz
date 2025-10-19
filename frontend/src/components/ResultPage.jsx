@@ -1,24 +1,37 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import BookSuggestion from './BookSuggestion.jsx';
-import fallbackCatalog from '../data/bookCatalogFallback.js';
+import BookRecommendation from './BookRecommendation.jsx';
+
+const relatedQuizzes = [
+  {
+    id: 'attachment-style',
+    title: 'Attachment Style Reset',
+    subtitle: 'Discover your bonding blueprint',
+    image:
+      'https://images.pexels.com/photos/4021813/pexels-photo-4021813.jpeg?auto=compress&cs=tinysrgb&h=320&w=320',
+    href: '#attachment-style-reset'
+  },
+  {
+    id: 'burnout-scan',
+    title: 'Burnout Recovery Scan',
+    subtitle: 'Gauge your current energy reserves',
+    image:
+      'https://images.pexels.com/photos/4021814/pexels-photo-4021814.jpeg?auto=compress&cs=tinysrgb&h=320&w=320',
+    href: '#burnout-recovery-scan'
+  },
+  {
+    id: 'self-compassion',
+    title: 'Self-Compassion Snapshot',
+    subtitle: 'See how kind you are to yourself',
+    image:
+      'https://images.pexels.com/photos/3727464/pexels-photo-3727464.jpeg?auto=compress&cs=tinysrgb&h=320&w=320',
+    href: '#self-compassion-snapshot'
+  }
+];
 
 function ResultPage({ containerVariants, scores, category, onRetake, onBackHome }) {
-  const recommendedBook = useMemo(() => {
-    if (!category) {
-      return fallbackCatalog[0] ?? null;
-    }
-
-    const normalizedCategory = category.toLowerCase();
-    const directMatch = fallbackCatalog.find(
-      (entry) => entry.category.toLowerCase() === normalizedCategory
-    );
-
-    return directMatch ?? fallbackCatalog[0] ?? null;
-  }, [category]);
-
   const sortedScoreEntries = useMemo(() => {
-    const entries = Object.entries(scores);
+    const entries = Object.entries(scores ?? {});
 
     if (entries.length === 0) {
       return [];
@@ -27,63 +40,12 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
     return entries.sort((a, b) => b[1] - a[1]);
   }, [scores]);
 
-    const normalizedCategory = category.toLowerCase();
-    const directMatch = fallbackCatalog.find(
-      (entry) => entry.category.toLowerCase() === normalizedCategory
-    );
-
-    return directMatch ?? fallbackCatalog[0] ?? null;
-  }, [category]);
-
-  const sortedScoreEntries = useMemo(() => {
-    const entries = Object.entries(scores);
-
-    if (entries.length === 0) {
-      return [];
-    }
-
-    return entries.sort((a, b) => b[1] - a[1]);
-  }, [scores]);
-
-    const normalizedCategory = category.toLowerCase();
-    const directMatch = fallbackCatalog.find(
-      (entry) => entry.category.toLowerCase() === normalizedCategory
-    );
-
-    return directMatch ?? fallbackCatalog[0] ?? null;
-  }, [category]);
-
-  const sortedScoreEntries = useMemo(() => {
-    const entries = Object.entries(scores);
-
-    if (entries.length === 0) {
-      return [];
-    }
-
-    return entries.sort((a, b) => b[1] - a[1]);
-  }, [scores]);
-
-    const normalizedCategory = category.toLowerCase();
-    const directMatch = fallbackCatalog.find(
-      (entry) => entry.category.toLowerCase() === normalizedCategory
-    );
-
-    return directMatch ?? fallbackCatalog[0] ?? null;
-  }, [category]);
-
-  // ✅ Sort scores descending for display
-  const sortedScoreEntries = useMemo(() => {
-    const entries = Object.entries(scores);
-    if (entries.length === 0) return [];
-    return entries.sort((a, b) => b[1] - a[1]);
-  }, [scores]);
-
-  // ✅ Share text
   const shareMessage = category
     ? encodeURIComponent(
         `MindMatch highlighted ${category} as my focus area. Explore tailored support at Psychology.com.co.`
       )
     : encodeURIComponent('Discover insights about your emotional focus area with MindMatch.');
+
   const shareUrl = encodeURIComponent(
     typeof window !== 'undefined' ? window.location.href : 'https://mindmatch.local'
   );
@@ -97,7 +59,6 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
       exit="exit"
       className="space-y-12"
     >
-
       <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[2fr_1fr] lg:items-start">
         <div className="space-y-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -140,8 +101,7 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
               </h2>
               <p className="text-sm text-slate-600 md:text-base">
                 {category
-                  ? `The elevated ${category.toLowerCase()} score suggests this is the area to prioritize. Below you’ll find a
-                score breakdown and a handpicked resource to help you take the next step.`
+                  ? `The elevated ${category.toLowerCase()} score suggests this is the area to prioritize. Below you’ll find a score breakdown and a handpicked resource to help you take the next step.`
                   : 'Retake the quiz to receive a clearer read on which emotional focus deserves your attention today.'}
               </p>
             </div>
@@ -167,22 +127,7 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
             </div>
           </div>
 
-          {recommendedBook ? (
-            <BookSuggestion recommendation={recommendedBook} />
-          ) : (
-            <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-600">
-              Explore curated resources and workbooks at
-              <a
-                href="https://www.psychology.com.co/"
-                className="ml-1 font-semibold text-primary underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Psychology.com.co
-              </a>{' '}
-              to continue your journey.
-            </div>
-          )}
+          <BookRecommendation category={category} />
         </div>
 
         <aside className="space-y-6 rounded-3xl bg-slate-50 p-6 text-sm text-slate-600">
@@ -227,6 +172,38 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
           </div>
         </aside>
       </div>
+
+      <section className="space-y-5">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary-dark">Keep exploring</p>
+          <h2 className="font-display text-2xl font-bold text-slate-900 md:text-3xl">Related self-tests</h2>
+          <p className="max-w-2xl text-sm text-slate-600 md:text-base">
+            Continue your MindMatch journey with companion quizzes that explore resilience, relationships, and self-kindness.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {relatedQuizzes.map((quiz) => (
+            <a
+              key={quiz.id}
+              href={quiz.href}
+              className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={quiz.image}
+                  alt={quiz.title}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="space-y-2 p-5">
+                <h3 className="font-display text-lg font-semibold text-slate-900">{quiz.title}</h3>
+                <p className="text-sm text-slate-600">{quiz.subtitle}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </motion.section>
   );
 }
