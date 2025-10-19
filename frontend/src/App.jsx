@@ -5,6 +5,7 @@ import QuizPage from './components/QuizPage.jsx';
 import ResultPage from './components/ResultPage.jsx';
 import SiteShell from './components/SiteShell.jsx';
 import quizData from './data/quizData.js';
+import { defaultShellProps, stageShellProps } from './data/siteChrome.js';
 
 const stages = {
   landing: 'landing',
@@ -17,20 +18,6 @@ const containerVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
 };
-
-const shellPropsByStage = {
-  [stages.landing]: {
-    breadcrumbs: ['Self Tests', 'Mental Health and Personality Tests']
-  },
-  [stages.quiz]: {
-    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder']
-  },
-  [stages.result]: {
-    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder', 'Your Results']
-  }
-};
-
-const defaultShellProps = { breadcrumbs: [] };
 
 function App() {
   const [stage, setStage] = useState(stages.landing);
@@ -61,7 +48,7 @@ function App() {
     }
   }, [stage]);
 
-  const shellProps = shellPropsByStage[stage] ?? defaultShellProps;
+  const shellProps = stageShellProps[stage] ?? defaultShellProps;
 
   return (
     <div className="min-h-screen bg-slate-100 py-10">

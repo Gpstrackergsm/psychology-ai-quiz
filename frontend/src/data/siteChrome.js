@@ -50,3 +50,17 @@ export const magazineCovers = [
 
 export const siteDisclaimer =
   'Psychology Today’s online self-tests are intended for informational purposes only and are not diagnostic tools. Psychology Today does not capture or store personally identifiable information, and your identity cannot be determined from your responses. Aggregated self-test responses are stored to improve the tests and provide performance comparisons. Psychology Today uses third party cookies such as Google Analytics to collect visitor data on this page without sharing any personal data, ensuring your identity cannot be determined from your visit. There are no advertising partners included on these self-test pages. If you wish to remove cookies from this site or opt out of data sharing, please click ‘Do not share or sell my personal information’ below. For a reliable medical diagnosis, please consult a professional.';
+
+export const stageShellProps = {
+  landing: {
+    breadcrumbs: ['Self Tests', 'Mental Health and Personality Tests']
+  },
+  quiz: {
+    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder']
+  },
+  result: {
+    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder', 'Your Results']
+  }
+};
+
+export const defaultShellProps = { breadcrumbs: [] };
