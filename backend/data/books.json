@@ -1,42 +1,42 @@
 [
   {
     "category": "Anxiety",
-    "title": "The CBT Flip Chart",
-    "author": "Seth J. Gillihan",
-    "summary": "A practical, visual guide to cognitive behavioral tools that calm anxious thoughts and foster resilience.",
-    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/71-HnXKhf4L.jpg",
-    "purchaseLink": "https://www.amazon.com/CBT-Flip-Chart-Cognitive-Behavioral/dp/1623158244"
+    "title": "Treating Health Anxiety and Fear of Death: A Practitioner's CBT Guide",
+    "author": "Patricia Furer, John R. Walker, and Murray B. Stein",
+    "summary": "Evidence-based CBT strategies to help calm catastrophic thinking and build confidence when health worries surge.",
+    "coverImage": null,
+    "purchaseLink": "https://www.psychology.com.co/product-page/treating-health-anxiety-and-fear-of-death-a-practitioner-s-guide"
   },
   {
     "category": "Trauma",
-    "title": "PTSD & Trauma Recovery Workbook",
-    "author": "Arielle Schwartz",
-    "summary": "Step-by-step exercises and grounding practices to navigate trauma healing with compassion.",
-    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/81V3PzmxvUL.jpg",
-    "purchaseLink": "https://www.amazon.com/PTSD-Trauma-Recovery-Workbook-Evidence-Based/dp/1641521317"
+    "title": "The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma",
+    "author": "Bessel van der Kolk",
+    "summary": "Neuroscience-backed practices that reconnect mind and body so you can process and release lingering trauma responses.",
+    "coverImage": null,
+    "purchaseLink": "https://www.psychology.com.co/product-page/the-body-keeps-the-score-brain-mind-and-body-in-the-healing-of-trauma"
   },
   {
     "category": "Depression",
-    "title": "The Cognitive Behavioral Workbook for Depression",
-    "author": "William J. Knaus",
-    "summary": "Evidence-based CBT strategies that help reframe negative thinking and build momentum toward joy.",
-    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/81x5-6mZQVL.jpg",
-    "purchaseLink": "https://www.amazon.com/Cognitive-Behavioral-Workbook-Depression-Step/dp/1684038338"
+    "title": "The Mindful Way Through Depression",
+    "author": "Mark Williams, John Teasdale, Zindel Segal, and Jon Kabat-Zinn",
+    "summary": "A mindfulness-based roadmap for noticing rumination early, meeting it with compassion, and rediscovering daily joy.",
+    "coverImage": null,
+    "purchaseLink": "https://www.psychology.com.co/product-page/the-mindful-way-through-depression-freeing-yourself-from-chronic-unhappiness"
   },
   {
     "category": "Relationships",
-    "title": "The Couples Therapy Workbook",
-    "author": "Kathleen Mates-Youngman",
-    "summary": "Guided conversations and activities that strengthen communication and rebuild intimacy.",
-    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/81KOzwqJ1xL.jpg",
-    "purchaseLink": "https://www.amazon.com/Couples-Therapy-Workbook-Strategies-Relationship/dp/164152233X"
+    "title": "It's Not Me, It's You: Break the Blame Cycle. Relationship Better",
+    "author": "John Kim",
+    "summary": "Practical prompts and stories that help couples interrupt blame loops and build more honest, connected partnerships.",
+    "coverImage": null,
+    "purchaseLink": "https://www.psychology.com.co/product-page/it-s-not-me-it-s-you-break-the-blame-cycle-relationship-better"
   },
   {
     "category": "Motivation",
-    "title": "Atomic Habits",
-    "author": "James Clear",
-    "summary": "A proven framework for building better habits, breaking bad ones, and mastering small improvements.",
-    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg",
-    "purchaseLink": "https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299"
+    "title": "Daring Greatly",
+    "author": "Brené Brown",
+    "summary": "Research-driven insights on embracing vulnerability so you can show up fully and create momentum toward what matters.",
+    "coverImage": null,
+    "purchaseLink": "https://www.psychology.com.co/product-page/daring-greatly-how-the-courage-to-be-vulnerable-transforms-the-way-we-live"
   }
 ]
