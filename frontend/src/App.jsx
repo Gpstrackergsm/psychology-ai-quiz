@@ -25,6 +25,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(null);
 
   const resetProgress = () => {
+
     setCurrentCategory(null);
     setScores({});
   };
@@ -81,6 +82,7 @@ function App() {
                   questions={quizData}
                   onComplete={handleQuizComplete}
                   onExit={handleBackHome}
+ main
                 />
               )}
 
