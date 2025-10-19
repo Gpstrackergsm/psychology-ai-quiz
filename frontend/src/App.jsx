@@ -24,9 +24,14 @@ function App() {
   const [scores, setScores] = useState({});
   const [currentCategory, setCurrentCategory] = useState(null);
 
+  const resetProgress = () => {
   const handleQuizStart = () => {
     setCurrentCategory(null);
     setScores({});
+  };
+
+  const handleQuizStart = () => {
+    resetProgress();
     setStage(stages.quiz);
   };
 
@@ -38,9 +43,13 @@ function App() {
   };
 
   const handleRetake = () => {
-    setCurrentCategory(null);
-    setScores({});
+    resetProgress();
     setStage(stages.quiz);
+  };
+
+  const handleBackHome = () => {
+    resetProgress();
+    setStage(stages.landing);
   };
 
   useEffect(() => {
@@ -72,6 +81,7 @@ function App() {
                   containerVariants={containerVariants}
                   questions={quizData}
                   onComplete={handleQuizComplete}
+                  onExit={handleBackHome}
                   onExit={() => setStage(stages.landing)}
                 />
               )}
@@ -82,6 +92,7 @@ function App() {
                   scores={scores}
                   category={currentCategory}
                   onRetake={handleRetake}
+                  onBackHome={handleBackHome}
                   onBackHome={() => setStage(stages.landing)}
                 />
               )}
