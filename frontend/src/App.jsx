@@ -18,6 +18,20 @@ const containerVariants = {
   exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
 };
 
+const shellPropsByStage = {
+  [stages.landing]: {
+    breadcrumbs: ['Self Tests', 'Mental Health and Personality Tests']
+  },
+  [stages.quiz]: {
+    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder']
+  },
+  [stages.result]: {
+    breadcrumbs: ['Self Tests', 'MindMatch Focus Finder', 'Your Results']
+  }
+};
+
+const defaultShellProps = { breadcrumbs: [] };
+
 function App() {
   const [stage, setStage] = useState(stages.landing);
   const [scores, setScores] = useState({});
@@ -40,19 +54,7 @@ function App() {
     setStage(stages.quiz);
   };
 
-  const shellPropsByStage = {
-    [stages.landing]: {
-      breadcrumbs: ['Self Tests', 'Mental Health and Personality Tests']
-    },
-    [stages.quiz]: {
-      breadcrumbs: ['Self Tests', 'MindMatch Focus Finder']
-    },
-    [stages.result]: {
-      breadcrumbs: ['Self Tests', 'MindMatch Focus Finder', 'Your Results']
-    }
-  };
-
-  const shellProps = shellPropsByStage[stage] ?? { breadcrumbs: [] };
+  const shellProps = shellPropsByStage[stage] ?? defaultShellProps;
 
   return (
     <div className="min-h-screen bg-slate-100 py-10">

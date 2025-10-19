@@ -20,6 +20,8 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
   })();
 
   const scoreEntries = Object.entries(scores);
+  const sortedScoreEntries =
+    scoreEntries.length > 0 ? [...scoreEntries].sort((a, b) => b[1] - a[1]) : [];
 
   const shareMessage = category
     ? encodeURIComponent(
@@ -89,19 +91,17 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
             </div>
             <div className="space-y-3">
               <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500">Category scores</h3>
-              {scoreEntries.length > 0 ? (
+              {sortedScoreEntries.length > 0 ? (
                 <ul className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2">
-                  {scoreEntries
-                    .sort((a, b) => b[1] - a[1])
-                    .map(([key, value]) => (
-                      <li
-                        key={key}
-                        className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-2"
-                      >
-                        <span className="font-medium text-slate-700">{key}</span>
-                        <span className="font-semibold text-primary">{value}</span>
-                      </li>
-                    ))}
+                  {sortedScoreEntries.map(([key, value]) => (
+                    <li
+                      key={key}
+                      className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-2"
+                    >
+                      <span className="font-medium text-slate-700">{key}</span>
+                      <span className="font-semibold text-primary">{value}</span>
+                    </li>
+                  ))}
                 </ul>
               ) : (
                 <p className="rounded-2xl border border-dashed border-slate-200 bg-white/60 px-4 py-3 text-sm text-slate-500">
