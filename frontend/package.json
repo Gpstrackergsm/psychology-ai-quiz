@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "check:conflicts": "node scripts/check-conflicts.js",
+    "predev": "npm run check:conflicts",
+    "prebuild": "npm run check:conflicts",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
