@@ -25,6 +25,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(null);
 
   const resetProgress = () => {
+  const handleQuizStart = () => {
     setCurrentCategory(null);
     setScores({});
   };
@@ -81,6 +82,7 @@ function App() {
                   questions={quizData}
                   onComplete={handleQuizComplete}
                   onExit={handleBackHome}
+                  onExit={() => setStage(stages.landing)}
                 />
               )}
 
@@ -91,6 +93,7 @@ function App() {
                   category={currentCategory}
                   onRetake={handleRetake}
                   onBackHome={handleBackHome}
+                  onBackHome={() => setStage(stages.landing)}
                 />
               )}
             </motion.div>

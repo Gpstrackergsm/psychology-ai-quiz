@@ -27,6 +27,40 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
     return entries.sort((a, b) => b[1] - a[1]);
   }, [scores]);
 
+    const normalizedCategory = category.toLowerCase();
+    const directMatch = fallbackCatalog.find(
+      (entry) => entry.category.toLowerCase() === normalizedCategory
+    );
+
+    return directMatch ?? fallbackCatalog[0] ?? null;
+  }, [category]);
+
+  const sortedScoreEntries = useMemo(() => {
+    const entries = Object.entries(scores);
+
+    if (entries.length === 0) {
+      return [];
+    }
+
+    return entries.sort((a, b) => b[1] - a[1]);
+  }, [scores]);
+
+    const normalizedCategory = category.toLowerCase();
+    const directMatch = fallbackCatalog.find(
+      (entry) => entry.category.toLowerCase() === normalizedCategory
+    );
+
+    return directMatch ?? fallbackCatalog[0] ?? null;
+  }, [category]);
+
+  // ✅ Sort scores descending for display
+  const sortedScoreEntries = useMemo(() => {
+    const entries = Object.entries(scores);
+    if (entries.length === 0) return [];
+    return entries.sort((a, b) => b[1] - a[1]);
+  }, [scores]);
+
+  // ✅ Share text
   const shareMessage = category
     ? encodeURIComponent(
         `MindMatch highlighted ${category} as my focus area. Explore tailored support at Psychology.com.co.`
