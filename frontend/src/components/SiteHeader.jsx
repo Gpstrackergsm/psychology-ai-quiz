@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
 import { navItems, siteBreadcrumbContext } from '../data/siteChrome.js';
 
-function SiteHeader({ breadcrumbs = [] }) {
+function SiteHeader({ breadcrumbs = [], onStartQuiz }) {
   const normalizedBreadcrumbs = breadcrumbs.map((crumb) =>
     typeof crumb === 'string' ? { label: crumb } : crumb
   );
+
+  const StartQuizComponent = onStartQuiz ? 'button' : 'a';
+  const startQuizProps = onStartQuiz
+    ? { type: 'button', onClick: onStartQuiz }
+    : { href: '#start' };
 
   return (
     <motion.header
@@ -22,12 +27,12 @@ function SiteHeader({ breadcrumbs = [] }) {
                 {label}
               </a>
             ))}
-            <a
-              href="#start"
+            <StartQuizComponent
+              {...startQuizProps}
               className="rounded-full border border-white/20 bg-white/5 px-4 py-1 text-sm font-semibold text-white transition hover:border-primary hover:bg-primary hover:text-midnight"
             >
               Start quiz
-            </a>
+            </StartQuizComponent>
           </nav>
         </div>
         <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-slate-400">
