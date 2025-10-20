@@ -49,10 +49,10 @@ function QuizPage({ containerVariants, questions, onComplete, onExit }) {
           <div className="space-y-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="space-y-3">
-                <h1 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+                <h1 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
                   MindMatch Focus Finder
                 </h1>
-                <p className="max-w-2xl text-base text-slate-600 md:text-lg">
+                <p className="max-w-2xl text-base text-slate-300 md:text-lg">
                   “Know thyself” is a great rule of thumb. Spend about three minutes with this guided check-in to surface the
                   emotional focus most present today. Each response helps us align you with Psychology.com.co resources and
                   workbooks that match your needs.
@@ -63,62 +63,62 @@ function QuizPage({ containerVariants, questions, onComplete, onExit }) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onExit}
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 px-5 py-2 text-sm font-semibold text-slate-600 shadow-sm transition hover:border-primary hover:text-primary-dark"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-slate-200 shadow-sm transition hover:border-primary hover:text-primary-light"
               >
                 Return to directory
               </motion.button>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-slate-500">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-slate-400">
               <span>12 Questions</span>
-              <span className="text-slate-300">•</span>
+              <span className="text-slate-600">•</span>
               <span>3 Minute self-test</span>
-              <span className="text-slate-300">•</span>
+              <span className="text-slate-600">•</span>
               <span>No sign-in required</span>
             </div>
           </div>
 
-          <div className="space-y-6 rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm">
+          <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20 backdrop-blur">
             <ProgressBar current={currentIndex} total={totalQuestions} />
             <QuestionCard question={questions[currentIndex]} onSelect={handleAnswer} />
           </div>
 
-          <div className="space-y-3 rounded-3xl bg-slate-50 p-6 text-sm text-slate-600">
-            <p className="font-semibold uppercase tracking-widest text-slate-500">How your match is determined</p>
-            <p>
+          <div className="space-y-3 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200 shadow-inner shadow-black/20">
+            <p className="font-semibold uppercase tracking-widest text-slate-400">How your match is determined</p>
+            <p className="text-slate-300">
               Each answer adds points to a core support area. When you submit all responses, the highest score reveals today’s
               focus and unlocks a book recommendation sourced from Psychology.com.co.
             </p>
-            <ul className="grid gap-2 text-slate-600 sm:grid-cols-2">
+            <ul className="grid gap-2 text-slate-300 sm:grid-cols-2">
               {categories.map((category) => (
                 <li key={category} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="font-medium text-slate-700">{category}</span>
+                  <span className="h-2 w-2 rounded-full bg-primary-light" />
+                  <span className="font-medium text-white">{category}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <aside className="space-y-6 rounded-3xl bg-slate-50 p-6 text-sm text-slate-600">
+        <aside className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200 shadow-xl shadow-black/20 backdrop-blur">
           <div className="space-y-3">
-            <h2 className="text-base font-semibold uppercase tracking-widest text-slate-500">About this self-test</h2>
-            <p>
+            <h2 className="text-base font-semibold uppercase tracking-widest text-slate-400">About this self-test</h2>
+            <p className="text-slate-300">
               This MindMatch assessment mirrors the Psychology Test experience, offering a compassionate snapshot of your
               current mindset. Use it for insight, not diagnosis, and bring your results to a trusted professional if you’d like
               ongoing support.
             </p>
           </div>
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-slate-700">What you’ll receive</h3>
-            <ul className="space-y-2 text-slate-600">
+            <h3 className="text-sm font-semibold text-white">What you’ll receive</h3>
+            <ul className="space-y-2 text-slate-300">
               <li>• A highlight of today’s most activated emotional focus.</li>
               <li>• Category-by-category scoring to understand your patterns.</li>
               <li>• A Psychology.com.co workbook suggestion tailored to your result.</li>
             </ul>
           </div>
-          <div className="rounded-2xl bg-white p-4 text-slate-600 shadow-sm">
-            <p className="font-semibold text-slate-700">Need additional guidance?</p>
-            <p>
+          <div className="rounded-2xl border border-white/10 bg-white/10 p-4 text-slate-200 shadow-inner">
+            <p className="font-semibold text-white">Need additional guidance?</p>
+            <p className="text-slate-300">
               Explore the “Find a Therapist” directory or browse more self-tests to keep learning about your emotional health.
             </p>
           </div>

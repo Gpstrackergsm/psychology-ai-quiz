@@ -98,19 +98,19 @@ function BookRecommendation({ category }) {
   if (status === 'loading' && !recommendation) {
     const fallbacks = fallbackCatalog.slice(0, FALLBACK_LIMIT);
     return (
-      <div className="space-y-4 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm md:p-8">
-        <div className="h-6 w-48 animate-pulse rounded-full bg-slate-200" />
-        <div className="h-4 w-64 animate-pulse rounded-full bg-slate-200" />
+      <div className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20 md:p-8">
+        <div className="h-6 w-48 animate-pulse rounded-full bg-white/10" />
+        <div className="h-4 w-64 animate-pulse rounded-full bg-white/10" />
         <div className="grid gap-3 sm:grid-cols-3">
           {fallbacks.map((fallback) => (
             <div key={`${fallback.category}-${fallback.title}`} className="space-y-2">
-              <div className="h-40 rounded-2xl border border-dashed border-slate-200 bg-slate-50" />
-              <div className="h-3 w-32 animate-pulse rounded-full bg-slate-200" />
-              <div className="h-3 w-24 animate-pulse rounded-full bg-slate-100" />
+              <div className="h-40 rounded-2xl border border-dashed border-white/10 bg-white/10" />
+              <div className="h-3 w-32 animate-pulse rounded-full bg-white/10" />
+              <div className="h-3 w-24 animate-pulse rounded-full bg-white/5" />
             </div>
           ))}
         </div>
-        <p className="text-xs text-slate-500">Gathering fresh recommendations…</p>
+        <p className="text-xs text-slate-400">Gathering fresh recommendations…</p>
       </div>
     );
   }
@@ -119,7 +119,7 @@ function BookRecommendation({ category }) {
     <div className="space-y-3">
       <BookSuggestion recommendation={recommendation ?? fallbackRecommendation} />
       {errorMessage && (
-        <p className="text-xs font-medium text-amber-600">{errorMessage}</p>
+        <p className="text-xs font-medium text-amber-300">{errorMessage}</p>
       )}
     </div>
   );

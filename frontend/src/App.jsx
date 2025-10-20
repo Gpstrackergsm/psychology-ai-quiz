@@ -60,7 +60,7 @@ function App() {
   const shellProps = stageShellProps[stage] ?? defaultShellProps;
 
   return (
-    <div className="min-h-screen bg-slate-100 py-10">
+    <div className="min-h-screen bg-transparent py-12">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SiteShell {...shellProps}>
           <AnimatePresence mode="wait">
