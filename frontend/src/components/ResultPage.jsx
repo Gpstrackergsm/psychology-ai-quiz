@@ -161,7 +161,7 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
             <ul className="space-y-2 text-slate-600">
               <li>• Bookmark this snapshot and revisit in a few weeks to compare progress.</li>
               <li>• Bring your focus area into therapy or journaling for deeper exploration.</li>
-              <li>• Explore additional Psychology Today self-tests to expand your self-awareness.</li>
+              <li>• Explore additional Psychology Test self-tests to expand your self-awareness.</li>
             </ul>
           </div>
           <div className="rounded-2xl bg-white p-4 text-slate-600 shadow-sm">
