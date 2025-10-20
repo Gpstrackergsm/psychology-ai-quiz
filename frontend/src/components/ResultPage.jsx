@@ -42,7 +42,7 @@ function ResultPage({ containerVariants, scores, category, onRetake, onBackHome 
 
   const shareMessage = category
     ? encodeURIComponent(
-        `MindMatch highlighted ${category} as my focus area. Explore tailored support at Psychology.com.co.`
+        `MindMatch highlighted ${category} as my focus area. Explore tailored support with their recommended resources.`
       )
     : encodeURIComponent('Discover insights about your emotional focus area with MindMatch.');
 

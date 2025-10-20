@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import placeholderCover from '../assets/mindmatch-book-cover.svg';
 
 function BookSuggestion({ recommendation }) {
   if (!recommendation) {
@@ -10,6 +11,11 @@ function BookSuggestion({ recommendation }) {
   }
 
   const hasCover = Boolean(recommendation.coverImage);
+  const coverImageSrc = hasCover ? recommendation.coverImage : placeholderCover;
+  const coverAltText = hasCover
+    ? `Cover of ${recommendation.title}`
+    : `Illustrated cover representing a ${recommendation.category?.toLowerCase() ?? 'featured'} read`;
+  const ctaLabel = recommendation.ctaLabel ?? 'View book details';
 
   return (
     <motion.article
@@ -19,17 +25,12 @@ function BookSuggestion({ recommendation }) {
       className="grid gap-6 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm md:grid-cols-[180px,1fr] md:p-8"
     >
       <div className="flex items-center justify-center">
-        {hasCover ? (
-          <img
-            src={recommendation.coverImage}
-            alt={`Cover of ${recommendation.title}`}
-            className="max-h-56 rounded-2xl border border-slate-200 shadow-sm"
-          />
-        ) : (
-          <div className="flex h-48 w-36 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 text-center text-xs font-semibold uppercase tracking-widest text-slate-400">
-            Psychology.com.co
-          </div>
-        )}
+        <img
+          src={coverImageSrc}
+          alt={coverAltText}
+          loading="lazy"
+          className="max-h-56 rounded-2xl border border-slate-200 object-cover shadow-sm"
+        />
       </div>
       <div className="space-y-4">
         <div className="space-y-2">
@@ -46,7 +47,7 @@ function BookSuggestion({ recommendation }) {
           whileTap={{ scale: 0.98 }}
           className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition hover:bg-primary-dark"
         >
-          Buy now on Psychology.com.co
+          {ctaLabel}
         </motion.a>
       </div>
     </motion.article>
