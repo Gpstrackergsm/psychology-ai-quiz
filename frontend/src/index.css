@@ -4,6 +4,10 @@
 
 body {
   @apply bg-midnight text-slate-100;
+}
+
+.quiz-stage-background {
+  @apply bg-midnight;
   background-image: radial-gradient(circle at 20% 20%, rgba(56, 243, 208, 0.08), transparent 55%),
     radial-gradient(circle at 80% 10%, rgba(99, 102, 241, 0.08), transparent 45%),
     linear-gradient(180deg, #0b1120 0%, #0f172a 55%, #0b1120 100%);

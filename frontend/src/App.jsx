@@ -61,9 +61,10 @@ function App() {
   }, [stage]);
 
   const shellProps = stageShellProps[stage] ?? defaultShellProps;
+  const isQuizStage = stage === stages.quiz;
 
   return (
-    <div className="min-h-screen bg-transparent py-12">
+    <div className={`min-h-screen py-12 ${isQuizStage ? 'quiz-stage-background' : ''}`}>
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <SiteShell {...shellProps}>
           <AnimatePresence mode="wait">
