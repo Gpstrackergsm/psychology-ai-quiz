@@ -1,9 +1,8 @@
 export const navItems = [
-  'Find a Therapist',
-  'Get Help',
-  'Magazine',
-  'Tests',
-  'US'
+  { label: 'Overview', href: '#overview' },
+  { label: 'Benefits', href: '#benefits' },
+  { label: 'How it works', href: '#process' },
+  { label: 'Get started', href: '#start' }
 ];
 
 export const siteBreadcrumbContext = {
