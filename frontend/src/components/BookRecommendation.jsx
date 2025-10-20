@@ -82,7 +82,7 @@ function BookRecommendation({ category }) {
           console.error('Failed to fetch book recommendations', error);
           setRecommendation(null);
           setStatus('error');
-          setErrorMessage('Showing a curated Psychology.com.co pick while we refresh live suggestions.');
+          setErrorMessage('Showing a curated MindMatch pick while we refresh live suggestions.');
         }
       }
     }
