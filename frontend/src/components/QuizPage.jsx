@@ -103,7 +103,7 @@ function QuizPage({ containerVariants, questions, onComplete, onExit }) {
           <div className="space-y-3">
             <h2 className="text-base font-semibold uppercase tracking-widest text-slate-500">About this self-test</h2>
             <p>
-              This MindMatch assessment mirrors the Psychology Today test experience, offering a compassionate snapshot of your
+              This MindMatch assessment mirrors the Psychology Test experience, offering a compassionate snapshot of your
               current mindset. Use it for insight, not diagnosis, and bring your results to a trusted professional if you’d like
               ongoing support.
             </p>

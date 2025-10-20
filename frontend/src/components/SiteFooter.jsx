@@ -47,7 +47,7 @@ function SiteFooter() {
             <span key={label}>{label}</span>
           ))}
         </div>
-        <p className="text-[11px] text-slate-400">Psychology Today © 2025 Sussex Publishers, LLC</p>
+        <p className="text-[11px] text-slate-400">Psychology Test © 2025 Sussex Publishers, LLC</p>
       </motion.section>
     </div>
   );

@@ -15,7 +15,7 @@ function SiteHeader({ breadcrumbs = [] }) {
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-6">
-          <span className="text-2xl font-semibold text-slate-900">Psychology Today</span>
+          <span className="text-2xl font-semibold text-slate-900">Psychology Test</span>
           <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 md:flex">
             {navItems.map(({ label, href }) => (
               <a key={label} href={href} className="transition hover:text-primary-dark">
