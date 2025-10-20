@@ -51,13 +51,13 @@ function LandingPage({ containerVariants, onStart }) {
     >
       <section
         id="overview"
-        className="relative grid gap-12 overflow-hidden rounded-3xl border border-white/10 bg-mist/60 p-10 shadow-2xl shadow-primary/15 md:grid-cols-2 md:items-center"
+        className="relative grid gap-10 overflow-hidden rounded-3xl border border-white/10 bg-mist/60 p-6 shadow-2xl shadow-primary/15 sm:p-8 md:grid-cols-2 md:items-center md:gap-12 lg:p-10"
       >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mist/90 via-midnight/95 to-[#050a1b]" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-primary/25 blur-3xl" aria-hidden="true" />
         <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
 
-        <div className="relative space-y-7">
+        <div className="relative space-y-6 sm:space-y-7">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-200">
             MindMatch
             <span className="hidden text-slate-400 md:inline">Focus Finder</span>
@@ -69,7 +69,7 @@ function LandingPage({ containerVariants, onStart }) {
             MindMatch is a single, intentionally crafted self-assessment. In just twelve questions we pinpoint the emotional focus
             you would benefit from exploring and pair it with a practical resource you can dive into today.
           </p>
-          <div className="flex flex-wrap gap-3 text-xs font-medium uppercase tracking-[0.25em] text-slate-400">
+          <div className="flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:gap-3 sm:text-xs sm:tracking-[0.25em]">
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-primary-light" aria-hidden="true" />Evidence-informed prompts
             </span>
@@ -85,14 +85,14 @@ function LandingPage({ containerVariants, onStart }) {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             onClick={onStart}
-            className="inline-flex items-center justify-center rounded-full bg-primary-light px-8 py-3 text-sm font-semibold text-mist shadow-lg shadow-primary/30 transition hover:bg-primary"
+            className="inline-flex w-full items-center justify-center rounded-full bg-primary-light px-6 py-3 text-sm font-semibold text-mist shadow-lg shadow-primary/30 transition hover:bg-primary sm:w-auto sm:px-8"
           >
             Take the MindMatch Quiz
           </motion.button>
         </div>
 
-        <div className="relative space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200 shadow-inner shadow-black/20 backdrop-blur">
-          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-5 text-slate-200">
+        <div className="relative space-y-5 rounded-3xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200 shadow-inner shadow-black/20 backdrop-blur sm:space-y-6 sm:p-6 md:p-7">
+          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-slate-200 sm:p-5">
             <h2 className="text-base font-semibold text-white">What to expect</h2>
             <ul className="space-y-3">
               {steps.map((step) => (
@@ -107,7 +107,7 @@ function LandingPage({ containerVariants, onStart }) {
             </ul>
           </div>
 
-          <dl className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-sm md:grid-cols-3">
+          <dl className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-sm sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="space-y-1">
                 <dt className="text-xs font-medium uppercase tracking-[0.3em] text-slate-400">{stat.label}</dt>
@@ -116,9 +116,9 @@ function LandingPage({ containerVariants, onStart }) {
             ))}
           </dl>
 
-          <div className="space-y-2 text-xs text-slate-400">
-            <p className="font-semibold uppercase tracking-[0.4em] text-slate-500">Trusted by teams supporting</p>
-            <div className="flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.35em] text-slate-500">
+          <div className="space-y-2 text-[11px] text-slate-400 sm:text-xs">
+            <p className="font-semibold uppercase tracking-[0.3em] text-slate-500 sm:tracking-[0.4em]">Trusted by teams supporting</p>
+            <div className="flex flex-wrap gap-2 uppercase tracking-[0.3em] text-slate-500 sm:gap-3 sm:tracking-[0.35em]">
               <span>Employee well-being</span>
               <span>University counseling</span>
               <span>Peer support networks</span>
@@ -127,7 +127,7 @@ function LandingPage({ containerVariants, onStart }) {
         </div>
       </section>
 
-      <section id="benefits" className="space-y-10">
+      <section id="benefits" className="space-y-8 sm:space-y-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-3">
             <h2 className="font-display text-2xl font-semibold text-white md:text-3xl">Why professionals choose MindMatch</h2>
@@ -136,7 +136,7 @@ function LandingPage({ containerVariants, onStart }) {
               choices or jargon.
             </p>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-300">
+          <span className="inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-300 sm:text-xs sm:tracking-[0.35em] md:self-auto">
             No filler content
           </span>
         </div>
@@ -162,7 +162,7 @@ function LandingPage({ containerVariants, onStart }) {
 
       <section
         id="process"
-        className="grid gap-8 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-black/20 backdrop-blur md:grid-cols-[0.8fr,1.2fr]"
+        className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20 backdrop-blur sm:gap-8 sm:p-7 md:grid-cols-[0.8fr,1.2fr] md:p-8"
       >
         <div className="space-y-3">
           <h2 className="font-display text-2xl font-semibold text-white">How it works</h2>
@@ -175,7 +175,7 @@ function LandingPage({ containerVariants, onStart }) {
           {steps.map((step, index) => (
             <li
               key={step.title}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner shadow-black/20 transition hover:border-primary/40"
+              className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner shadow-black/20 transition hover:border-primary/40 sm:flex-row sm:items-start"
             >
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/30 text-sm font-semibold text-white">
                 {index + 1}
@@ -191,7 +191,7 @@ function LandingPage({ containerVariants, onStart }) {
 
       <section
         id="start"
-        className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-primary-dark via-midnight to-[#050a1b] p-8 text-center text-slate-100 shadow-2xl shadow-primary/20 md:p-10"
+        className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-primary-dark via-midnight to-[#050a1b] p-6 text-center text-slate-100 shadow-2xl shadow-primary/20 sm:p-8 md:p-10"
       >
         <div className="pointer-events-none absolute -left-20 top-10 h-40 w-40 rounded-full bg-primary-light/40 blur-3xl" aria-hidden="true" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-52 w-52 rounded-full bg-accent/30 blur-3xl" aria-hidden="true" />
