@@ -15,10 +15,10 @@ function SiteFooter() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.4 }}
-        className="space-y-4 rounded-3xl bg-slate-50 p-6"
+        className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-slate-300 shadow-xl shadow-black/20 backdrop-blur"
       >
-        <p className="text-sm leading-relaxed text-slate-600">{siteDisclaimer}</p>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+        <p className="text-sm leading-relaxed">{siteDisclaimer}</p>
+        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
           {socialChannels.map((channel) => (
             <span key={channel}>{channel}</span>
           ))}
@@ -30,7 +30,7 @@ function SiteFooter() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="space-y-4 text-xs text-slate-500"
+        className="space-y-4 text-xs text-slate-400"
       >
         <div className="flex flex-wrap gap-3">
           {aboutLinks.map((link) => (
@@ -42,12 +42,12 @@ function SiteFooter() {
             <span key={link}>{link}</span>
           ))}
         </div>
-        <div className="flex flex-wrap gap-3 text-[11px] uppercase tracking-widest text-slate-400">
+        <div className="flex flex-wrap gap-3 text-[11px] uppercase tracking-widest text-slate-500">
           {magazineCovers.map((label) => (
             <span key={label}>{label}</span>
           ))}
         </div>
-        <p className="text-[11px] text-slate-400">Psychology Test © 2025 Sussex Publishers, LLC</p>
+        <p className="text-[11px] text-slate-500">Psychology Test © 2025 Sussex Publishers, LLC</p>
       </motion.section>
     </div>
   );

@@ -5,16 +5,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#7c3aed',
-          light: '#a78bfa',
-          dark: '#5b21b6'
+          DEFAULT: '#00ad9f',
+          light: '#38f3d0',
+          dark: '#008675'
         },
         accent: {
-          DEFAULT: '#ec4899',
-          light: '#f9a8d4',
-          dark: '#db2777'
+          DEFAULT: '#4338ca',
+          light: '#6366f1',
+          dark: '#312e81'
         },
-        soft: '#f5f3ff'
+        midnight: '#0b1120',
+        mist: '#0f172a'
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'sans-serif'],
