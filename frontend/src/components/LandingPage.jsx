@@ -94,13 +94,13 @@ function LandingPage({ containerVariants, onStart }) {
         <div className="relative space-y-5 rounded-3xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200 shadow-inner shadow-black/20 backdrop-blur sm:space-y-6 sm:p-6 md:p-7">
           <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-slate-200 sm:p-5">
             <h2 className="text-base font-semibold text-white">What to expect</h2>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {steps.map((step) => (
-                <li key={step.title} className="flex gap-3">
+                <li key={step.title} className="flex gap-2">
                   <span className="mt-1 inline-flex h-2 w-2 flex-shrink-0 rounded-full bg-primary-light" aria-hidden="true" />
                   <span>
                     <span className="block text-sm font-semibold text-white">{step.title}</span>
-                    <span className="mt-1 block text-sm text-slate-300">{step.description}</span>
+                    <span className="block text-sm text-slate-300">{step.description}</span>
                   </span>
                 </li>
               ))}
