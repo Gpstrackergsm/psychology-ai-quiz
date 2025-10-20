@@ -6,6 +6,7 @@ import ResultPage from './components/ResultPage.jsx';
 import SiteShell from './components/SiteShell.jsx';
 import quizData from './data/quizData.js';
 import { defaultShellProps, stageShellProps } from './data/siteChrome.js';
+import useEmbedViewportSync from './hooks/useEmbedViewportSync.js';
 
 const stages = {
   landing: 'landing',
@@ -50,6 +51,8 @@ function App() {
     resetProgress();
     setStage(stages.landing);
   };
+
+  useEmbedViewportSync();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
