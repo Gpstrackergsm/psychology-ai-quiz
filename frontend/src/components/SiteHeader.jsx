@@ -17,17 +17,17 @@ function SiteHeader({ breadcrumbs = [] }) {
         <div className="flex items-center gap-6">
           <span className="text-2xl font-semibold text-slate-900">Psychology Today</span>
           <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 md:flex">
-            {navItems.map((item) => (
-              <a key={item} href="#" className="transition hover:text-primary-dark">
-                {item}
+            {navItems.map(({ label, href }) => (
+              <a key={label} href={href} className="transition hover:text-primary-dark">
+                {label}
               </a>
             ))}
-            <button
-              type="button"
-              className="rounded-full border border-slate-200 px-4 py-1 text-sm font-semibold text-slate-600 transition hover:border-primary hover:text-primary-dark"
+            <a
+              href="#start"
+              className="rounded-full border border-primary bg-primary/10 px-4 py-1 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
             >
-              Search
-            </button>
+              Start quiz
+            </a>
           </nav>
         </div>
         <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-slate-500">
