@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className={`min-h-screen py-12 ${isQuizStage ? 'quiz-stage-background' : ''}`}>
-      <div className="mx-auto max-w-6xl px-4 md:px-8">
+      <div className="w-full px-0 sm:px-4 lg:px-6">
         <SiteShell {...shellProps} onStartQuiz={handleQuizStart}>
           <AnimatePresence mode="wait">
             <motion.div
