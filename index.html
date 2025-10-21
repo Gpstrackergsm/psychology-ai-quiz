@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Psychology AI Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1>Psychology AI Quiz</h1>
+        <p>
+          Test your knowledge of foundational concepts in psychology and how AI is
+          helping researchers understand the human mind.
+        </p>
+      </header>
+
+      <section class="quiz" aria-live="polite">
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+          <span id="progress-label">Question 1 of 8</span>
+        </div>
+
+        <article class="card" id="question-card">
+          <h2 id="question-text">Loading question…</h2>
+          <ul class="choices" id="choices" role="list"></ul>
+          <p class="explanation" id="explanation" aria-live="polite"></p>
+        </article>
+
+        <div class="actions">
+          <button id="next-btn" class="primary" type="button" disabled>
+            Next question
+          </button>
+        </div>
+      </section>
+
+      <section class="results" id="results" hidden>
+        <h2>Your results</h2>
+        <p id="score-summary"></p>
+        <p id="feedback"></p>
+        <button id="restart-btn" class="secondary" type="button">
+          Try again
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Curious to learn more? Explore the
+        <a
+          href="https://www.apa.org/monitor/2023/03/cover-ai-psychology"
+          target="_blank"
+          rel="noreferrer"
+          >APA Monitor on AI &amp; Psychology</a
+        >.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
